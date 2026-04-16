@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV.COM | FOTV® MEDIA NETWORKS</title>
+    <title>FOTV.COM | 火视网</title>
     <style>
         :root {
             --primary-red: #E60012;
             --deep-black: #050505;
-            --text-gray: #666;
+            --text-gray: #555;
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', sans-serif;
             background-color: var(--deep-black);
             color: white;
             overflow-x: hidden;
@@ -31,26 +31,14 @@
             z-index: -1;
         }
 
-        nav {
-            padding: 30px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            box-sizing: border-box;
-            z-index: 100;
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 20vh;
+            padding-top: 15vh;
         }
 
-        /* 核心 Logo 样式 */
+        /* Logo 样式 */
         .hero-logo-svg {
             height: 100px;
             width: auto;
@@ -60,7 +48,7 @@
 
         /* 巨大的核心域名 */
         .super-domain {
-            font-size: 85pt;
+            font-size: 90pt;
             font-weight: 900;
             letter-spacing: -3px;
             line-height: 1;
@@ -69,90 +57,93 @@
             text-transform: uppercase;
         }
 
-        /* 品牌联合声明（小字排版） */
-        .sub-brand-line {
-            font-size: 14pt;
-            font-weight: 400;
+        /* 域名下的中文名 */
+        .chinese-brand {
+            font-size: 32pt;
+            font-weight: bold;
             color: var(--primary-red);
-            letter-spacing: 6px;
-            margin-top: 15px;
-            text-transform: uppercase;
-            opacity: 0.9;
+            letter-spacing: 15px;
+            margin-top: 10px;
+            text-indent: 15px; /* 抵消字间距带来的偏移 */
         }
 
         .status-badge {
             display: inline-block;
-            padding: 6px 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #888;
+            padding: 5px 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #444;
             font-size: 9pt;
-            border-radius: 2px;
-            margin-bottom: 40px;
             letter-spacing: 3px;
+            margin-bottom: 40px;
         }
 
         .features {
             display: flex;
             justify-content: center;
             margin-top: 100px;
-            gap: 40px;
+            gap: 60px;
             flex-wrap: wrap;
         }
 
         .feature-card {
-            width: 280px;
+            width: 250px;
             text-align: left;
-            border-left: 1px solid rgba(230, 0, 18, 0.3);
-            padding-left: 20px;
         }
 
         .feature-card h3 {
-            color: white;
-            font-size: 12pt;
+            color: #888;
+            font-size: 11pt;
             margin-bottom: 10px;
             letter-spacing: 1px;
+            border-bottom: 1px solid var(--primary-red);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
         .feature-card p {
             font-size: 9pt;
             line-height: 1.8;
-            color: var(--text-gray);
+            color: #444;
         }
 
         .contact-section {
-            margin-top: 120px;
+            margin-top: 100px;
             padding-bottom: 100px;
-        }
-
-        .contact-title {
-            color: #444;
-            font-size: 10pt;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
         }
 
         .contact-email {
             font-size: 22pt;
             color: white;
             text-decoration: none;
-            font-weight: 300;
+            font-weight: 200;
             transition: 0.3s;
+            letter-spacing: 1px;
         }
 
         .contact-email:hover {
             color: var(--primary-red);
         }
 
+        /* 底部威武霸气的声明 */
         footer {
-            padding: 60px 20px;
+            padding: 80px 20px;
             background: #000;
             border-top: 1px solid #111;
             text-align: center;
         }
 
+        .footer-brand-line {
+            font-size: 16pt;
+            font-weight: bold;
+            color: var(--primary-red);
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
         .legal-notice {
             font-size: 8pt;
-            color: #333;
+            color: #222;
             max-width: 800px;
             margin: 0 auto;
             line-height: 2;
@@ -162,9 +153,9 @@
 
         @media (max-width: 768px) {
             .super-domain { font-size: 45pt; }
-            .sub-brand-line { font-size: 9pt; letter-spacing: 3px; }
-            .container { padding-top: 15vh; }
-            .contact-email { font-size: 16pt; }
+            .chinese-brand { font-size: 20pt; letter-spacing: 8px; }
+            .footer-brand-line { font-size: 10pt; letter-spacing: 2px; }
+            .container { padding-top: 10vh; }
         }
     </style>
 </head>
@@ -172,14 +163,9 @@
 
 <div class="bg-overlay"></div>
 
-<nav>
-    <div style="font-size: 10pt; color: #444; letter-spacing: 2px;">EST. 2026</div>
-    <div style="font-size: 10pt; color: var(--primary-red); font-weight: bold;">OFFICIAL PORTAL</div>
-</nav>
-
 <div class="container">
     <div class="hero-section">
-        <div class="status-badge">GLOBAL ASSET INITIALIZED</div>
+        <div class="status-badge">OFFICIAL ASSET CONTROL</div>
         
         <div class="logo-wrapper">
             <svg class="hero-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
@@ -190,40 +176,41 @@
 
         <h1 class="super-domain">FOTV.COM</h1>
         
-        <div class="sub-brand-line">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</div>
+        <div class="chinese-brand">火视网</div>
 
-        <p style="font-size: 12pt; color: #555; max-width: 600px; margin: 40px auto 0; line-height: 2; letter-spacing: 1px;">
-            AI-DRIVEN GLOBAL SHORT-FORM DRAMA ECOSYSTEM. <br>
-            POWERED BY <span style="color:#888">FOTV® (CLASS 35)</span> TRADEMARK AUTHORITY.
+        <p style="font-size: 11pt; color: #333; max-width: 600px; margin: 60px auto 0; line-height: 2; letter-spacing: 2px; text-transform: uppercase;">
+            AI-POWERED CONTENT CLUSTER. GLOBAL SHORT-FORM DRAMA DISTRIBUTION.
         </p>
     </div>
 
     <div class="features">
         <div class="feature-card">
-            <h3>AI INFRASTRUCTURE</h3>
-            <p>Multilingual real-time translation and voice-over engine for global distribution.</p>
+            <h3>AI ENGINE</h3>
+            <p>Real-time multilingual translation for cross-border streaming.</p>
         </div>
         <div class="feature-card">
-            <h3>ASSET CONTROL</h3>
-            <p>Direct governance of high-value digital media assets and distribution protocols.</p>
+            <h3>GLOBAL IP</h3>
+            <p>Strategic control over top-tier digital media identifiers.</p>
         </div>
         <div class="feature-card">
-            <h3>BRAND EQUITY</h3>
-            <p>Exclusive Class 35 trademark protection for global partner networks.</p>
+            <h3>DISTRIBUTION</h3>
+            <p>Next-gen CPS protocols for decentralized media networks.</p>
         </div>
     </div>
 
     <div class="contact-section">
-        <div class="contact-title">FOR PARTNERSHIP & STRATEGIC INQUIRIES</div>
+        <div style="color: #333; font-size: 9pt; margin-bottom: 10px; letter-spacing: 2px;">INQUIRIES</div>
         <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
     </div>
 </div>
 
 <footer>
+    <div class="footer-brand-line">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</div>
+    
     <div class="legal-notice">
         © 2026 FOTV MEDIA NETWORKS. ALL RIGHTS RESERVED. <br>
-        GLOBAL ASSET: <strong>FOTV.COM</strong> | REGISTERED TRADEMARK: <strong>FOTV® (CLASS 35)</strong> <br>
-        BEIJING / LONDON / SILICON VALLEY
+        GLOBAL DOMAIN: <strong>FOTV.COM</strong> | REGISTERED TRADEMARK: <strong>FOTV® (CLASS 35)</strong> <br>
+        INTELLECTUAL PROPERTY PROTECTED IN BEIJING / LONDON / SILICON VALLEY
     </div>
 </footer>
 
