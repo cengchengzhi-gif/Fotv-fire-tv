@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV® 火视网 - 全球短剧赛道 INITIALIZED</title>
+    <title>FOTV® 火视网 - 全球热门短剧平台</title>
     <style>
         :root {
             --primary-red: #E60012;
-            --fire-orange: #FF4D00;
-            --gold-glow: #ffcc00;
             --deep-black: #000000;
-            --legal-black: #000000; /* 您要求的纯黑字体 */
-            --legal-gray: #444; /* 法律声明字体颜色 */
-            --text-gray: #333;
+            --legal-gray: #333;
         }
 
         body, html {
@@ -39,78 +35,84 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 15vh;
+            padding-top: 10vh;
         }
 
         /* 核心品牌展示区 */
         .brand-hub {
             display: flex;
             flex-direction: column;
-            align-items: center; /* 整体对齐居中 */
+            align-items: center;
             margin-bottom: 60px;
             position: relative;
         }
 
-        /* 专门用于生成原地燃烧流体火焰的画布：体积加大 */
-        #fireCanvas {
-            height: 350px; /* 大体积标识 */
-            width: 350px;
-            filter: drop-shadow(0 0 50px rgba(230, 0, 18, 0.5));
-            z-index: 2;
-            border-radius: 50%; /* 形成圆柱/圆球状燃烧区 */
-            
-            /* 关键修改：实体原地轴心旋转 */
-            animation: firePlaceRotate 20s infinite linear;
-            transform-origin: center center; /* 确保原地轴心旋转 */
-        }
-
-        /* 原地实体旋转动效 */
-        @keyframes firePlaceRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* 核心标识与域名靠拢协调文字区 */
-        .hero-title-text {
-            text-align: center;
-            width: 100%;
-            
-            /* 关键调整：负边距向上移动，与火焰紧密衔接，形成整体 */
-            margin-top: -80px; 
+        /* 视觉对齐容器 */
+        .brand-align-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: inline-flex;
             position: relative;
-            z-index: 3;
         }
 
-        /* 核心域名大写 */
+        /* 燃烧的火标识 - 保持大气尺寸 */
+        .hero-logo-svg {
+            height: 200px;
+            width: auto;
+            filter: drop-shadow(0 0 35px rgba(230, 0, 18, 0.5));
+            z-index: 2;
+            position: relative;
+            margin-left: -50px; /* 火焰微调向左，与文字视觉对齐 */
+        }
+
+        /* 火焰原地燃烧动画 */
+        .fire-path {
+            fill: var(--primary-red);
+            mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            mask-size: 100% 200%;
+            -webkit-mask-size: 100% 200%;
+            animation: fireFlowing 2.5s infinite linear;
+        }
+
+        @keyframes fireFlowing {
+            from { mask-position: 0% 100%; -webkit-mask-position: 0% 100%; }
+            to { mask-position: 0% -100%; -webkit-mask-position: 0% -100%; }
+        }
+
+        /* 核心域名 - 缩小并向上靠拢 */
         .super-domain {
-            font-size: 50pt; /* 域名缩小协调 */
+            font-size: 38pt; 
             font-weight: 900;
             letter-spacing: 2px;
-            line-height: 1;
             margin: 0;
             color: #ffffff;
             text-transform: uppercase;
             opacity: 0.95;
+            margin-top: -30px; /* 极致靠拢 */
+            position: relative;
+            z-index: 1;
         }
 
         /* 域名下的中文名 */
         .chinese-brand {
-            font-size: 26pt;
+            font-size: 20pt;
             font-weight: bold;
             color: var(--primary-red);
-            letter-spacing: 15px;
+            letter-spacing: 12px;
             margin-top: 5px;
-            text-indent: 15px;
+            text-indent: 12px;
             opacity: 0.9;
         }
 
-        /* 热门短剧宣传文字：金色发光 */
+        /* 热门短剧宣传文字 */
         .promo-text {
             margin-top: 50px;
-            font-size: 15pt;
+            font-size: 16pt;
             font-weight: 200;
             color: #ddd;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             background: linear-gradient(90deg, #444, #fff, #444);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -122,53 +124,25 @@
             to { background-position: 200% center; }
         }
 
-        .features {
-            display: flex;
-            justify-content: center;
-            margin-top: 80px;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .feature-card {
-            width: 200px;
-            text-align: left;
-        }
-
-        .feature-card h3 {
-            color: #ccc;
-            font-size: 10pt;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-left: 2px solid var(--primary-red);
-            padding-left: 10px;
-        }
-
-        .feature-card p {
-            font-size: 8pt;
-            line-height: 1.8;
-            color: #555;
-        }
-
         .contact-section {
-            margin-top: 100px;
-            padding-bottom: 100px;
+            margin-top: 80px;
+            padding-bottom: 80px;
         }
 
         .contact-email {
-            font-size: 20pt;
-            color: white;
+            font-size: 18pt;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 200;
             transition: 0.3s;
+            opacity: 0.8;
         }
 
         .contact-email:hover {
             color: var(--primary-red);
+            opacity: 1;
         }
 
-        /* 底部法律声明协调区 */
         footer {
             padding: 80px 20px;
             background: #000;
@@ -177,7 +151,7 @@
         }
 
         .legal-notice {
-            font-size: 9pt; /* 统一定义小字号 */
+            font-size: 8pt;
             color: var(--legal-gray);
             max-width: 900px;
             margin: 0 auto;
@@ -187,12 +161,10 @@
         }
 
         @media (max-width: 768px) {
-            #fireCanvas { height: 220px; width: 220px; }
-            .hero-title-text { margin-top: -40px; }
-            .super-domain { font-size: 26pt; }
+            .hero-logo-svg { height: 140px; margin-left: 0; }
+            .super-domain { font-size: 26pt; margin-top: -20px; }
             .chinese-brand { font-size: 16pt; }
             .promo-text { font-size: 12pt; }
-            .contact-email { font-size: 16pt; }
         }
     </style>
 </head>
@@ -203,9 +175,14 @@
 <div class="container">
     <div class="hero-section">
         <div class="brand-hub">
-            <canvas id="fireCanvas"></canvas>
-            
-            <div class="hero-title-text">
+            <div class="brand-align-block">
+                <div class="logo-wrapper">
+                    <svg class="hero-logo-svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                        <path class="fire-path" d="M100 25 Q120 -5 140 25 T170 25 Q180 55 150 85 L120 105 L90 85 Q60 55 80 25" />
+                        <polygon points="110,50 110,80 135,65" fill="white" />
+                    </svg>
+                </div>
+
                 <h1 class="super-domain">FOTV.COM</h1>
                 <div class="chinese-brand">火视网</div>
             </div>
@@ -214,23 +191,8 @@
         <div class="promo-text">热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED</div>
     </div>
 
-    <div class="features">
-        <div class="feature-card">
-            <h3>SHORT DRAMA</h3>
-            <p>基于精品爆款内容的数字化重塑，连接东方创意与全球观众。</p>
-        </div>
-        <div class="feature-card">
-            <h3>ASSET CONTROL</h3>
-            <p>持有FOTV全球数字资产权益，通过去中心化协议实现价值增长。</p>
-        </div>
-        <div class="feature-card">
-            <h3>BRAND EQUITY</h3>
-            <p>持有官方注册商标 fotv® (Class 35)，构建全球IP主权体系。</p>
-        </div>
-    </div>
-
     <div class="contact-section">
-        <div style="color: #333; font-size: 9pt; margin-bottom: 10px; letter-spacing: 2px;">INQUIRIES</div>
+        <div style="color: #222; font-size: 8pt; margin-bottom: 10px; letter-spacing: 2px;">INQUIRIES</div>
         <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
     </div>
 </div>
@@ -242,103 +204,6 @@
         PROTECTED IN BEIJING / LONDON / SILICON VALLEY
     </div>
 </footer>
-
-<script>
-(function() {
-    const canvas = document.getElementById('fireCanvas');
-    const ctx = canvas.getContext('2d');
-    const res = 120; // 物理网格分辨率，决定火焰细腻度
-
-    let width, height;
-    let particles = [];
-    const particleCount = 2000;
-
-    function initCanvas() {
-        width = canvas.width = 350;
-        height = canvas.height = 350;
-    }
-
-    class Particle {
-        constructor() {
-            this.reset();
-        }
-
-        reset() {
-            // 原地燃烧核心位置
-            this.x = width / 2;
-            this.y = height * 0.8; 
-            
-            // 实体粒子速度与扩散：实现原地燃烧翻滚
-            this.vx = (Math.random() - 0.5) * 1.5;
-            this.vy = -(Math.random() * 3 + 1.5);
-            this.life = Math.random() * 0.5 + 0.5;
-            this.size = Math.random() * 5 + 1;
-            
-            // 实体颜色渐变：核心金黄，外围鲜红
-            this.r = 230;
-            this.g = Math.floor(Math.random() * 180 + 50); // 密度决定黄色比例
-            this.b = 18;
-            this.a = 0.8;
-        }
-
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            this.life -= 0.015;
-            this.size *= 0.98; // 粒子向上燃烧时变小
-            
-            if (this.life <= 0 || this.size <= 0.2 || this.y < 0) {
-                this.reset();
-            }
-        }
-
-        draw() {
-            ctx.globalCompositeOperation = 'lighter'; // 叠加模式，增加发光感
-            ctx.fillStyle = `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a * this.life})`;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    // 关键：象火在原地燃烧、翻滚
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        
-        for (let particle of particles) {
-            particle.update();
-            particle.draw();
-        }
-
-        // 关键：为了增加“实体”感，加入一个金黄色的发光播放三角，跟随火焰整体旋转
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.fillStyle = `rgba(255, 215, 0, 0.9)`;
-        ctx.beginPath();
-        ctx.moveTo(width / 2 + 10, height / 2);
-        ctx.lineTo(width / 2 - 15, height / 2 - 15);
-        ctx.lineTo(width / 2 - 15, height / 2 + 15);
-        ctx.closePath();
-        ctx.fill();
-        ctx.filter = 'blur(2px)';
-        ctx.fillStyle = `rgba(255, 255, 255, 1)`;
-        ctx.beginPath();
-        ctx.moveTo(width / 2 + 10, height / 2);
-        ctx.lineTo(width / 2 - 15, height / 2 - 15);
-        ctx.lineTo(width / 2 - 15, height / 2 + 15);
-        ctx.closePath();
-        ctx.fill();
-        ctx.filter = 'none';
-        
-        requestAnimationFrame(animate);
-    }
-
-    initCanvas();
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-    animate();
-})();
-</script>
 
 </body>
 </html>
