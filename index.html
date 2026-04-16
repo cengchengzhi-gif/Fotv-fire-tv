@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV® 火视 - 全球短剧平台 | WWW.FOTV.COM</title>
+    <title>FOTV.COM | FOTV® MEDIA NETWORKS</title>
     <style>
         :root {
             --primary-red: #E60012;
             --deep-black: #050505;
-            --accent-gold: #D4AF37;
-            --text-gray: #888;
+            --text-gray: #666;
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: var(--deep-black);
             color: white;
             overflow-x: hidden;
@@ -33,13 +32,10 @@
         }
 
         nav {
-            padding: 15px 50px;
+            padding: 30px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(5, 5, 5, 0.9);
-            backdrop-filter: blur(15px);
             position: fixed;
             top: 0;
             width: 100%;
@@ -51,147 +47,124 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 180px;
+            padding-top: 20vh;
         }
 
-        /* 威武霸气的核心域名展示 */
-        .main-domain-title {
-            font-size: 56pt;
+        /* 核心 Logo 样式 */
+        .hero-logo-svg {
+            height: 100px;
+            width: auto;
+            filter: drop-shadow(0 0 20px rgba(230, 0, 18, 0.5));
+            margin-bottom: 20px;
+        }
+
+        /* 巨大的核心域名 */
+        .super-domain {
+            font-size: 85pt;
             font-weight: 900;
-            letter-spacing: -2px;
-            margin-bottom: 0;
-            background: linear-gradient(180deg, #ffffff 30%, #a0a0a0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255,255,255,0.2);
-            font-family: 'Arial Black', Gadget, sans-serif;
-        }
-
-        /* 品牌联合声明 */
-        .brand-alliance {
-            font-size: 18pt;
-            font-weight: bold;
-            color: var(--primary-red);
-            letter-spacing: 4px;
-            margin-top: 10px;
-            margin-bottom: 40px;
+            letter-spacing: -3px;
+            line-height: 1;
+            margin: 0;
+            color: #ffffff;
             text-transform: uppercase;
-            border-top: 1px solid rgba(230, 0, 18, 0.3);
-            border-bottom: 1px solid rgba(230, 0, 18, 0.3);
-            display: inline-block;
-            padding: 10px 40px;
         }
 
-        .hero-logo-wrapper {
-            margin-bottom: 30px;
-            animation: pulse 3s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(230, 0, 18, 0.4)); }
-            50% { transform: scale(1.03); filter: drop-shadow(0 0 40px rgba(230, 0, 18, 0.7)); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(230, 0, 18, 0.4)); }
+        /* 品牌联合声明（小字排版） */
+        .sub-brand-line {
+            font-size: 14pt;
+            font-weight: 400;
+            color: var(--primary-red);
+            letter-spacing: 6px;
+            margin-top: 15px;
+            text-transform: uppercase;
+            opacity: 0.9;
         }
 
         .status-badge {
             display: inline-block;
-            padding: 8px 25px;
-            background-color: var(--primary-red);
-            color: white;
-            font-size: 10pt;
-            font-weight: bold;
-            border-radius: 4px;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
+            padding: 6px 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #888;
+            font-size: 9pt;
+            border-radius: 2px;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
         }
 
         .features {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             margin-top: 100px;
+            gap: 40px;
             flex-wrap: wrap;
         }
 
         .feature-card {
-            width: 320px;
-            padding: 35px;
-            background: linear-gradient(145deg, #111, #080808);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 0; /* 硬朗风格 */
-            transition: 0.4s;
-            margin: 15px;
+            width: 280px;
             text-align: left;
-        }
-
-        .feature-card:hover {
-            border-color: var(--primary-red);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(230, 0, 18, 0.1);
+            border-left: 1px solid rgba(230, 0, 18, 0.3);
+            padding-left: 20px;
         }
 
         .feature-card h3 {
-            color: var(--accent-gold);
-            margin-bottom: 15px;
-            border-left: 3px solid var(--primary-red);
-            padding-left: 15px;
+            color: white;
+            font-size: 12pt;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .feature-card p {
+            font-size: 9pt;
+            line-height: 1.8;
+            color: var(--text-gray);
         }
 
         .contact-section {
             margin-top: 120px;
-            padding: 80px 20px;
-            background: #080808;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 100px;
         }
 
         .contact-title {
-            color: var(--accent-gold);
-            font-size: 16pt;
-            margin-bottom: 20px;
+            color: #444;
+            font-size: 10pt;
+            margin-bottom: 15px;
             letter-spacing: 2px;
         }
 
         .contact-email {
-            font-size: 28pt;
+            font-size: 22pt;
             color: white;
             text-decoration: none;
-            font-weight: 900;
+            font-weight: 300;
             transition: 0.3s;
         }
 
         .contact-email:hover {
             color: var(--primary-red);
-            text-shadow: 0 0 20px rgba(230, 0, 18, 0.8);
         }
 
         footer {
-            margin-top: 150px;
-            padding: 60px;
+            padding: 60px 20px;
             background: #000;
-            border-top: 2px solid var(--primary-red);
-        }
-
-        .footer-strong {
-            font-size: 16pt;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            display: block;
-            color: #fff;
+            border-top: 1px solid #111;
+            text-align: center;
         }
 
         .legal-notice {
-            font-size: 10pt;
-            color: #444;
-            max-width: 900px;
+            font-size: 8pt;
+            color: #333;
+            max-width: 800px;
             margin: 0 auto;
-            line-height: 2.2;
+            line-height: 2;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         @media (max-width: 768px) {
-            .main-domain-title { font-size: 30pt; }
-            .brand-alliance { font-size: 12pt; padding: 10px 20px; }
-            .contact-email { font-size: 18pt; }
-            .container { padding-top: 140px; }
+            .super-domain { font-size: 45pt; }
+            .sub-brand-line { font-size: 9pt; letter-spacing: 3px; }
+            .container { padding-top: 15vh; }
+            .contact-email { font-size: 16pt; }
         }
     </style>
 </head>
@@ -200,56 +173,57 @@
 <div class="bg-overlay"></div>
 
 <nav>
-    <svg width="100" height="30" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30 20 Q40 5 50 20 T65 20 Q70 35 55 50 L45 60 L35 50 Q20 35 30 20" fill="#E60012"/>
-        <text x="80" y="55" font-family="Arial Black" font-weight="900" font-size="55" fill="white">FOTV</text>
-    </svg>
-    <div style="font-size: 10pt; color: var(--accent-gold); font-weight: bold;">INTERNATIONAL MEDIA PORTAL</div>
+    <div style="font-size: 10pt; color: #444; letter-spacing: 2px;">EST. 2026</div>
+    <div style="font-size: 10pt; color: var(--primary-red); font-weight: bold;">OFFICIAL PORTAL</div>
 </nav>
 
 <div class="container">
     <div class="hero-section">
-        <div class="status-badge">GLOBAL NETWORK INITIALIZED</div>
+        <div class="status-badge">GLOBAL ASSET INITIALIZED</div>
         
-        <div class="hero-logo-wrapper">
-            <div class="main-domain-title">WWW.FOTV.COM</div>
-            <div class="brand-alliance">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</div>
+        <div class="logo-wrapper">
+            <svg class="hero-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60 40 Q75 10 90 40 T120 40 Q130 70 100 100 L80 120 L60 100 Q30 70 60 40" fill="#E60012"/>
+                <polygon points="75,55 75,85 100,70" fill="white" />
+            </svg>
         </div>
 
-        <p style="font-size: 15pt; color: #888; max-width: 800px; margin: 0 auto; line-height: 2; letter-spacing: 1px;">
-            AI驱动的全球短剧产业集群。基于顶级域名 <span style="color:white">FOTV.COM</span> 与官方注册商标 <span style="color:white">FOTV® (Class 35)</span> 
-            构建的跨国媒体生态系统。
+        <h1 class="super-domain">FOTV.COM</h1>
+        
+        <div class="sub-brand-line">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</div>
+
+        <p style="font-size: 12pt; color: #555; max-width: 600px; margin: 40px auto 0; line-height: 2; letter-spacing: 1px;">
+            AI-DRIVEN GLOBAL SHORT-FORM DRAMA ECOSYSTEM. <br>
+            POWERED BY <span style="color:#888">FOTV® (CLASS 35)</span> TRADEMARK AUTHORITY.
         </p>
     </div>
 
     <div class="features">
         <div class="feature-card">
             <h3>AI INFRASTRUCTURE</h3>
-            <p>基于人工智能的多语言实时转译引擎，为全球短剧出海提供标准化的技术底座。</p>
+            <p>Multilingual real-time translation and voice-over engine for global distribution.</p>
         </div>
         <div class="feature-card">
-            <h3>CAPITAL & ASSETS</h3>
-            <p>持有FOTV全球数字资产权益，通过去中心化分发协议实现内容价值的爆发式增长。</p>
+            <h3>ASSET CONTROL</h3>
+            <p>Direct governance of high-value digital media assets and distribution protocols.</p>
         </div>
         <div class="feature-card">
-            <h3>BRAND AUTHORITY</h3>
-            <p>第35类官方注册商标 fotv® 授权体系，为全球合伙人提供合规性与排他性品牌保护。</p>
+            <h3>BRAND EQUITY</h3>
+            <p>Exclusive Class 35 trademark protection for global partner networks.</p>
         </div>
     </div>
 
     <div class="contact-section">
-        <div class="contact-title">FOR PARTNERSHIP & STRATEGIC ACQUISITION</div>
+        <div class="contact-title">FOR PARTNERSHIP & STRATEGIC INQUIRIES</div>
         <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
     </div>
 </div>
 
 <footer>
-    <strong class="footer-strong">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</strong>
     <div class="legal-notice">
-        © 2026 FOTV Media Networks. All Rights Reserved. <br>
-        GLOBAL ASSET CONTROL: <strong>FOTV.COM</strong> | REGISTERED TRADEMARK: <strong>FOTV® (CLASS 35)</strong> <br>
-        OPERATIONAL HUBS: BEIJING / LONDON / SILICON VALLEY <br>
-        本网站及其关联品牌标志受国际知识产权法及第35类官方商标严格保护。未经授权的品牌冒用将面临法律追责。
+        © 2026 FOTV MEDIA NETWORKS. ALL RIGHTS RESERVED. <br>
+        GLOBAL ASSET: <strong>FOTV.COM</strong> | REGISTERED TRADEMARK: <strong>FOTV® (CLASS 35)</strong> <br>
+        BEIJING / LONDON / SILICON VALLEY
     </div>
 </footer>
 
