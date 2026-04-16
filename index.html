@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOTV® 火视 - 全球短剧平台 | Fire Vision Media Networks</title>
+    <style>
+        :root {
+            --primary-red: #E60012;
+            --deep-black: #0a0a0a;
+            --accent-gold: #D4AF37;
+            --text-gray: #a0a0a0;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+            background-color: var(--deep-black);
+            color: white;
+            overflow-x: hidden;
+            height: 100%;
+        }
+
+        /* 动态背景背景 */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #250000 0%, #0a0a0a 100%);
+            z-index: -1;
+        }
+
+        /* 顶部导航 */
+        nav {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 24pt;
+            font-weight: 900;
+            color: var(--primary-red);
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(230, 0, 18, 0.5);
+        }
+
+        /* 主体内容 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .hero-section {
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 48pt;
+            margin-bottom: 10px;
+            background: linear-gradient(to bottom, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 18pt;
+            color: var(--primary-red);
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* 倒计时/状态区 */
+        .status-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid var(--primary-red);
+            border-radius: 50px;
+            color: var(--primary-red);
+            font-size: 12pt;
+            margin-bottom: 50px;
+            box-shadow: inset 0 0 10px rgba(230, 0, 18, 0.2);
+        }
+
+        /* 特性展示 */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 80px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            width: 300px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+            margin: 15px;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-red);
+            background: rgba(230, 0, 18, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .feature-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            font-size: 10pt;
+            line-height: 1.6;
+            color: var(--text-gray);
+        }
+
+        /* 法律声明区 */
+        footer {
+            margin-top: 150px;
+            padding: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: #050505;
+        }
+
+        .legal-notice {
+            font-size: 9pt;
+            color: #555;
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 2;
+        }
+
+        .domain-tag {
+            color: white;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* 手机适配 */
+        @media (max-width: 768px) {
+            h1 { font-size: 30pt; }
+            .subtitle { font-size: 14pt; }
+            nav { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+
+<nav>
+    <div class="logo-text">FOTV</div>
+    <div style="font-size: 10pt; color: var(--accent-gold);">EN | CN</div>
+</nav>
+
+<div class="container">
+    <div class="hero-section">
+        <div class="status-badge">SYSTEM PRE-LAUNCHING / 系统内测准备中</div>
+        <h1>FIRE VISION</h1>
+        <div class="subtitle">火 视 全 球 短 剧</div>
+        <p style="font-size: 14pt; color: #ccc; max-width: 700px; margin: 0 auto; line-height: 1.8;">
+            AI 驱动的跨国短剧内容生态，连接东方创意与全球观众。基于 fotv.com 域名与 FOTV® 35类核心商标构建。
+        </p>
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+            <h3>AI GLOBAL REACH</h3>
+            <p>基于人工智能的多语言自动翻译与配音技术，实现精品短剧一键出海。</p>
+        </div>
+        <div class="feature-card">
+            <h3>CPS PARTNER</h3>
+            <p>去中心化流量分发模型，为全球推客提供最高效率的价值变现路径。</p>
+        </div>
+        <div class="feature-card">
+            <h3>LEGAL PROTECTION</h3>
+            <p>持有第35类官方注册商标 fotv®，为商业代理与品牌授权提供法律护航。</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 80px;">
+        <p style="color: var(--accent-gold); font-size: 11pt;">Contact: admin@fotv.com</p>
+    </div>
+</div>
+
+<footer>
+    <div class="domain-tag">WWW.FOTV.COM</div>
+    <div class="legal-notice">
+        © 2026 FOTV Media Networks. All Rights Reserved. <br>
+        Registered Trademark: <strong>fotv® (Class 35)</strong> | Intellectual Property Protected Worldwide. <br>
+        Operational Hubs: Beijing · London · Silicon Valley <br>
+        本网站所有权及 FOTV® 相关数字资产受国际法律保护。
+    </div>
+</footer>
+
+</body>
+</html>
