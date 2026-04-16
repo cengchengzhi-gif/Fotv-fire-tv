@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV® 火视网 - 全球热门短剧 INITIALIZED</title>
+    <title>FOTV® 火视网 - 全球热门短剧平台</title>
     <style>
         :root {
             --primary-red: #E60012;
-            --fire-orange: #FF4D00;
             --deep-black: #000000;
-            --text-gray: #444;
+            --legal-gray: #333;
         }
 
         body, html {
@@ -48,59 +47,68 @@
             position: relative;
         }
 
-        /* 专门用于生成原地燃烧流体火焰的画布 */
-        #fireCanvas {
-            height: 300px; /* 大体积标识 */
-            width: 300px;
-            filter: drop-shadow(0 0 50px rgba(230, 0, 18, 0.5));
-            z-index: 2;
-            border-radius: 50%; /* 形成圆柱/圆球状燃烧区 */
-            
-            /* 关键修改：实体原地轴心旋转 */
-            animation: firePlaceRotate 20s infinite linear;
-            transform-origin: center center; /* 确保原地轴心旋转 */
-        }
-
-        /* 原地实体旋转动效 */
-        @keyframes firePlaceRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* 文字内容：域名轴心居中，小点靠拢 */
-        .hero-title-text {
-            text-align: center;
-            width: 100%;
-            /* 关键调整：负边距向上靠拢协调 */
-            margin-top: -60px; 
+        /* 视觉对齐容器 */
+        .brand-align-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: inline-flex;
             position: relative;
-            z-index: 3;
         }
 
+        /* 燃烧的火标识 - 保持大气尺寸 */
+        .hero-logo-svg {
+            height: 200px;
+            width: auto;
+            filter: drop-shadow(0 0 35px rgba(230, 0, 18, 0.5));
+            z-index: 2;
+            position: relative;
+            margin-left: -50px; /* 火焰微调向左，与文字视觉对齐 */
+        }
+
+        /* 火焰原地燃烧动画 */
+        .fire-path {
+            fill: var(--primary-red);
+            mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            mask-size: 100% 200%;
+            -webkit-mask-size: 100% 200%;
+            animation: fireFlowing 2.5s infinite linear;
+        }
+
+        @keyframes fireFlowing {
+            from { mask-position: 0% 100%; -webkit-mask-position: 0% 100%; }
+            to { mask-position: 0% -100%; -webkit-mask-position: 0% -100%; }
+        }
+
+        /* 核心域名 - 缩小并向上靠拢 */
         .super-domain {
-            font-size: 38pt; /* 域名缩小协调 */
+            font-size: 38pt; 
             font-weight: 900;
             letter-spacing: 2px;
             margin: 0;
             color: #ffffff;
             text-transform: uppercase;
             opacity: 0.95;
-            line-height: 1;
+            margin-top: -30px; /* 极致靠拢 */
+            position: relative;
+            z-index: 1;
         }
 
+        /* 域名下的中文名 */
         .chinese-brand {
             font-size: 20pt;
             font-weight: bold;
             color: var(--primary-red);
             letter-spacing: 12px;
-            margin-top: 8px;
+            margin-top: 5px;
             text-indent: 12px;
             opacity: 0.9;
         }
 
-        /* 热门短剧宣传文字（金色发光） */
+        /* 热门短剧宣传文字 */
         .promo-text {
-            margin-top: 60px;
+            margin-top: 50px;
             font-size: 16pt;
             font-weight: 200;
             color: #ddd;
@@ -114,36 +122,6 @@
 
         @keyframes shine {
             to { background-position: 200% center; }
-        }
-
-        .features {
-            display: flex;
-            justify-content: center;
-            margin-top: 80px;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .feature-card {
-            width: 180px;
-            text-align: center;
-        }
-
-        .feature-card h3 {
-            color: #444;
-            font-size: 9pt;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #222;
-            padding-bottom: 5px;
-            display: inline-block;
-        }
-
-        .feature-card p {
-            font-size: 8pt;
-            line-height: 1.6;
-            color: #222;
         }
 
         .contact-section {
@@ -183,9 +161,8 @@
         }
 
         @media (max-width: 768px) {
-            #fireCanvas { height: 220px; width: 220px; }
-            .hero-title-text { margin-top: -40px; }
-            .super-domain { font-size: 26pt; }
+            .hero-logo-svg { height: 140px; margin-left: 0; }
+            .super-domain { font-size: 26pt; margin-top: -20px; }
             .chinese-brand { font-size: 16pt; }
             .promo-text { font-size: 12pt; }
         }
@@ -198,19 +175,24 @@
 <div class="container">
     <div class="hero-section">
         <div class="brand-hub">
-            <canvas id="fireCanvas"></canvas>
-            
-            <div class="hero-title-text">
+            <div class="brand-align-block">
+                <div class="logo-wrapper">
+                    <svg class="hero-logo-svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                        <path class="fire-path" d="M100 25 Q120 -5 140 25 T170 25 Q180 55 150 85 L120 105 L90 85 Q60 55 80 25" />
+                        <polygon points="110,50 110,80 135,65" fill="white" />
+                    </svg>
+                </div>
+
                 <h1 class="super-domain">FOTV.COM</h1>
                 <div class="chinese-brand">火视网</div>
             </div>
         </div>
 
-        <div class="promo-text">热门短剧赛道 · 全球流量分发 · 震撼启动</div>
+        <div class="promo-text">热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED</div>
     </div>
 
     <div class="contact-section">
-        <div style="color: #222; font-size: 8pt; margin-bottom: 10px; letter-spacing: 2px;">STRATEGIC INQUIRIES</div>
+        <div style="color: #222; font-size: 8pt; margin-bottom: 10px; letter-spacing: 2px;">INQUIRIES</div>
         <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
     </div>
 </div>
@@ -218,104 +200,10 @@
 <footer>
     <div class="legal-notice">
         © 2026 FOTV MEDIA NETWORKS. ALL RIGHTS RESERVED. <br>
-        GLOBAL DOMAIN: FOTV.COM | REGISTERED TRADEMARK: FOTV® (CLASS 35) <br>
-        BEIJING / LONDON / SILICON VALLEY
+        GLOBAL ASSET: FOTV.COM | REGISTERED TRADEMARK: FOTV® (CLASS 35) <br>
+        PROTECTED IN BEIJING / LONDON / SILICON VALLEY
     </div>
 </footer>
-
-<script>
-(function() {
-    const canvas = document.getElementById('fireCanvas');
-    const ctx = canvas.getContext('2d');
-    const res = 120; // 物理网格分辨率，决定火焰细腻度
-
-    let width, height;
-    let density, velocity, source, obstacles;
-
-    function initCanvas() {
-        width = canvas.width = 300;
-        height = canvas.height = 300;
-        density = new Float32Array(res * res);
-        velocity = new Float32Array(res * res * 2);
-        source = new Float32Array(res * res);
-        
-        // 初始化原地燃烧源：容器底部的金黄色核心
-        const centerX = res / 2;
-        const centerY = res * 0.8;
-        const radius = res * 0.15;
-        for (let i = 0; i < res; i++) {
-            for (let j = 0; j < res; j++) {
-                const dist = Math.sqrt((i - centerX)**2 + (j - centerY)**2);
-                if (dist < radius) {
-                    source[i + j * res] = 1.0;
-                }
-            }
-        }
-    }
-
-    // 极轻量级2D流体物理模拟算法 (Density + Velocity Diffusion/Advection)
-    function simulate() {
-        // ... (省略复杂的 Float32Array 流体物理计算代码，以保持代码极轻量级且一次性交付)
-        // 这个核心算法保证了火焰的原地燃烧和翻滚质感。
-        // 为了简化，我们使用一个高效的伪流体噪声函数来模拟原地燃烧。
-    }
-
-    // 实体火焰渲染引擎：核心金黄，外围鲜红
-    function render() {
-        simulate();
-        ctx.clearRect(0, 0, width, height);
-        ctx.globalCompositeOperation = 'lighter'; // 增加发光感
-
-        const time = Date.now() * 0.001; // 时间参数用于动效
-
-        for (let i = 0; i < res; i++) {
-            for (let j = 0; j < res; j++) {
-                const x = i / res * width;
-                const y = j / res * height;
-                
-                // 基于噪声的原地燃烧密度函数 (象火在原地燃烧、翻滚)
-                const d = Math.max(0, (source[i + j * res] || 0) * (0.8 + 0.2 * Math.sin(time + Math.sqrt(x*x + y*y) * 0.1)));
-
-                if (d > 0.1) {
-                    // 实体颜色渐变：核心金黄，外围鲜红
-                    const r = 230;
-                    const g = Math.floor(d * 180 + 50); // 密度决定黄色比例
-                    const b = 18;
-                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${d * 0.8})`;
-                    ctx.beginPath();
-                    // 密度决定粒子体积，形成原地流体翻滚感
-                    ctx.arc(x, y, d * res * 0.05, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-        }
-        
-        // 关键：为了增加“实体”感，加入一个金黄色的发光播放三角，跟随火焰旋转
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.fillStyle = `rgba(255, 215, 0, 0.9)`;
-        ctx.beginPath();
-        ctx.moveTo(width / 2 + 10, height / 2);
-        ctx.lineTo(width / 2 - 15, height / 2 - 15);
-        ctx.lineTo(width / 2 - 15, height / 2 + 15);
-        ctx.closePath();
-        ctx.fill();
-        ctx.filter = 'blur(2px)';
-        ctx.fillStyle = `rgba(255, 255, 255, 1)`;
-        ctx.beginPath();
-        ctx.moveTo(width / 2 + 10, height / 2);
-        ctx.lineTo(width / 2 - 15, height / 2 - 15);
-        ctx.lineTo(width / 2 - 15, height / 2 + 15);
-        ctx.closePath();
-        ctx.fill();
-        ctx.filter = 'none';
-        
-        requestAnimationFrame(render);
-    }
-
-    initCanvas();
-    render();
-})();
-</script>
 
 </body>
 </html>
