@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV® 火视网 - 全球热门短剧平台 INITIALIZED</title>
+    <title>FOTV® 火视网 - 全球热门短剧平台</title>
     <style>
         :root {
             --primary-red: #E60012;
@@ -35,41 +35,28 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 10vh;
+            padding-top: 12vh;
         }
 
-        /* 核心品牌展示区：整体中轴线居中 */
+        /* 核心品牌展示区 */
         .brand-hub {
             display: flex;
             flex-direction: column;
-            align-items: center; /* 整体对齐居中 */
+            align-items: center; /* 整体容器居中 */
             margin-bottom: 60px;
-            position: relative;
         }
 
-        /* 专门设计的对齐块：实现火焰靠左对齐下方文字起点，整体居中 */
-        .brand-align-block {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* 关键：内部元素向左对齐 */
-            display: inline-flex; /* 保持块居中 */
-            position: relative;
-        }
-
-        /* 燃烧的火标识 - 保持大气尺寸，视觉上微调靠左 */
+        /* 燃烧的火标识 - 尺寸加大，且向左偏移 */
         .hero-logo-svg {
-            height: 200px; /* 大标识 */
+            height: 200px;
             width: auto;
             filter: drop-shadow(0 0 45px rgba(230, 0, 18, 0.4));
             z-index: 2;
             position: relative;
             
-            /* 关键：负边距向上移动，紧密衔接 */
-            margin-top: -30px; 
-            margin-bottom: -5px; /* 负边距让 Logo 与域名紧密靠拢 */
-            
-            /* 视觉对齐修正：让火焰的最左侧视觉边缘靠右一点点，以配合文字F的起点 */
-            margin-left: -5px; 
+            /* 关键修改：向左平移，实现视觉上的靠左对齐 */
+            margin-left: -60px; 
+            margin-bottom: -40px; /* 负边距实现向上靠拢 */
         }
 
         /* 火焰燃烧动画 */
@@ -92,13 +79,7 @@
             100% { transform: scaleX(1.03) scaleY(1.02); opacity: 1; filter: blur(0.3px); }
         }
 
-        /* 中央展示区文字基础对齐样式 */
-        .hero-title-text {
-            text-align: left; /* 向左对齐 */
-            width: 100%; /* 占满对齐块空间 */
-        }
-
-        /* 核心域名 */
+        /* 核心域名 - 保持居中 */
         .super-domain {
             font-size: 38pt; 
             font-weight: 900;
@@ -112,14 +93,13 @@
             line-height: 1;
         }
 
-        /* 域名下的中文名 */
+        /* 域名下的中文名 - 保持居中 */
         .chinese-brand {
             font-size: 20pt;
             font-weight: bold;
             color: var(--primary-red);
             letter-spacing: 12px;
             margin-top: 8px;
-            margin-bottom: 0;
             text-indent: 12px;
             opacity: 0.9;
         }
@@ -209,12 +189,10 @@
         }
 
         @media (max-width: 768px) {
-            .hero-logo-svg { height: 160px; }
-            .super-domain { font-size: 26pt; margin-top: -25px; }
+            .hero-logo-svg { height: 160px; margin-left: 0; } /* 移动端回归居中 */
+            .super-domain { font-size: 26pt; }
             .chinese-brand { font-size: 16pt; }
             .promo-text { font-size: 12pt; }
-            .hero-title-text { text-align: center; } /* 移动端保持中轴线 */
-            .brand-align-block { align-items: center; } /* 移动端保持中轴线 */
         }
     </style>
 </head>
@@ -225,19 +203,15 @@
 <div class="container">
     <div class="hero-section">
         <div class="brand-hub">
-            <div class="brand-align-block">
-                <div class="logo-wrapper">
-                    <svg class="hero-logo-svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
-                        <path class="fire-body" d="M100 25 Q120 -5 140 25 T170 25 Q180 55 150 85 L120 105 L90 85 Q60 55 80 25" />
-                        <polygon points="110,50 110,80 135,65" fill="white" />
-                    </svg>
-                </div>
-
-                <div class="hero-title-text">
-                    <h1 class="super-domain">FOTV.COM</h1>
-                    <div class="chinese-brand">火视网</div>
-                </div>
+            <div class="logo-wrapper">
+                <svg class="hero-logo-svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                    <path class="fire-body" d="M100 25 Q120 -5 140 25 T170 25 Q180 55 150 85 L120 105 L90 85 Q60 55 80 25" />
+                    <polygon points="110,50 110,80 135,65" fill="white" />
+                </svg>
             </div>
+
+            <h1 class="super-domain">FOTV.COM</h1>
+            <div class="chinese-brand">火视网</div>
         </div>
 
         <div class="promo-text">热门短剧赛道 · 全球流量分发 · 2026 震撼启动</div>
@@ -246,15 +220,15 @@
     <div class="features">
         <div class="feature-card">
             <h3>SHORT DRAMA</h3>
-            <p>基于精品内容的数字化重塑。</p>
+            <p>爆款内容数字化重塑。</p>
         </div>
         <div class="feature-card">
             <h3>AI INFRA</h3>
-            <p>AI 驱动的多语种内容全球瞬时送达。</p>
+            <p>AI 驱动多语种全球覆盖。</p>
         </div>
         <div class="feature-card">
             <h3>BRAND IP</h3>
-            <p>顶级域名驱动的商业主权体系。</p>
+            <p>顶级域名驱动商业主权。</p>
         </div>
     </div>
 
