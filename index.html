@@ -22,7 +22,6 @@
             height: 100%;
         }
 
-        /* 动态背景背景 */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -33,28 +32,41 @@
             z-index: -1;
         }
 
-        /* 顶部导航 */
         nav {
-            padding: 20px 50px;
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 100;
         }
 
-        .logo-text {
-            font-size: 24pt;
-            font-weight: 900;
-            color: var(--primary-red);
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(230, 0, 18, 0.5);
-        }
-
-        /* 主体内容 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 100px;
+            padding-top: 150px;
+        }
+
+        /* SVG Logo 容器样式 */
+        .logo-svg {
+            height: 120px;
+            width: auto;
+            filter: drop-shadow(0 0 20px rgba(230, 0, 18, 0.5));
+            margin-bottom: 30px;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(230, 0, 18, 0.5)); }
+            50% { transform: scale(1.02); filter: drop-shadow(0 0 35px rgba(230, 0, 18, 0.8)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(230, 0, 18, 0.5)); }
         }
 
         .hero-section {
@@ -66,35 +78,25 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        h1 {
-            font-size: 48pt;
-            margin-bottom: 10px;
-            background: linear-gradient(to bottom, #ffffff 0%, #a0a0a0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .subtitle {
             font-size: 18pt;
             color: var(--primary-red);
-            letter-spacing: 5px;
+            letter-spacing: 8px;
             margin-bottom: 40px;
             font-weight: 300;
         }
 
-        /* 倒计时/状态区 */
         .status-badge {
             display: inline-block;
             padding: 10px 30px;
             border: 1px solid var(--primary-red);
             border-radius: 50px;
             color: var(--primary-red);
-            font-size: 12pt;
-            margin-bottom: 50px;
+            font-size: 11pt;
+            margin-bottom: 30px;
             box-shadow: inset 0 0 10px rgba(230, 0, 18, 0.2);
         }
 
-        /* 特性展示 */
         .features {
             display: flex;
             justify-content: space-around;
@@ -110,6 +112,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: 0.3s;
             margin: 15px;
+            text-align: left;
         }
 
         .feature-card:hover {
@@ -123,13 +126,35 @@
             margin-bottom: 15px;
         }
 
-        .feature-card p {
-            font-size: 10pt;
-            line-height: 1.6;
-            color: var(--text-gray);
+        .contact-section {
+            margin-top: 100px;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, rgba(230, 0, 18, 0.1) 0%, rgba(0,0,0,0) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(230, 0, 18, 0.1);
         }
 
-        /* 法律声明区 */
+        .contact-title {
+            color: var(--accent-gold);
+            font-size: 14pt;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .contact-email {
+            font-size: 24pt;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .contact-email:hover {
+            color: var(--primary-red);
+            text-shadow: 0 0 15px rgba(230, 0, 18, 1);
+        }
+
         footer {
             margin-top: 150px;
             padding: 50px;
@@ -145,17 +170,11 @@
             line-height: 2;
         }
 
-        .domain-tag {
-            color: white;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        /* 手机适配 */
         @media (max-width: 768px) {
-            h1 { font-size: 30pt; }
-            .subtitle { font-size: 14pt; }
-            nav { padding: 20px; }
+            .logo-svg { height: 80px; }
+            .subtitle { font-size: 14pt; letter-spacing: 4px; }
+            .contact-email { font-size: 16pt; }
+            nav { padding: 15px 20px; }
         }
     </style>
 </head>
@@ -164,14 +183,33 @@
 <div class="bg-overlay"></div>
 
 <nav>
-    <div class="logo-text">FOTV</div>
+    <svg width="120" height="40" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 20 Q40 5 50 20 T65 20 Q70 35 55 50 L45 60 L35 50 Q20 35 30 20" fill="#E60012"/>
+        <text x="80" y="55" font-family="Arial" font-weight="900" font-size="50" fill="white">FOTV</text>
+    </svg>
     <div style="font-size: 10pt; color: var(--accent-gold);">EN | CN</div>
 </nav>
 
 <div class="container">
     <div class="hero-section">
         <div class="status-badge">SYSTEM PRE-LAUNCHING / 系统内测准备中</div>
-        <h1>FIRE VISION</h1>
+        
+        <div class="hero-logo-wrapper">
+            <svg class="logo-svg" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="fireGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FF4D4D;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#E60012;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M60 40 Q75 10 90 40 T120 40 Q130 70 100 100 L80 120 L60 100 Q30 70 60 40" fill="url(#fireGrad)"/>
+                <polygon points="75,55 75,85 100,70" fill="white" />
+                <text x="140" y="85" font-family="Arial" font-weight="900" font-size="70" fill="white">FOTV</text>
+                <text x="140" y="125" font-family="PingFang SC" font-weight="bold" font-size="28" fill="#E60012" letter-spacing="8">火视网</text>
+                <rect x="140" y="135" width="220" height="2" fill="#E60012" opacity="0.5"/>
+            </svg>
+        </div>
+        
         <div class="subtitle">火 视 全 球 短 剧</div>
         <p style="font-size: 14pt; color: #ccc; max-width: 700px; margin: 0 auto; line-height: 1.8;">
             AI 驱动的跨国短剧内容生态，连接东方创意与全球观众。基于 fotv.com 域名与 FOTV® 35类核心商标构建。
@@ -193,13 +231,15 @@
         </div>
     </div>
 
-    <div style="margin-top: 80px;">
-        <p style="color: var(--accent-gold); font-size: 11pt;">Contact: admin@fotv.com</p>
+    <div class="contact-section">
+        <div class="contact-title">FOR PARTNERSHIP & ACQUISITION INQUIRIES</div>
+        <div style="font-size: 10pt; color: var(--text-gray); margin-bottom: 20px;">合作洽谈及资产收购咨询</div>
+        <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
     </div>
 </div>
 
 <footer>
-    <div class="domain-tag">WWW.FOTV.COM</div>
+    <div style="color:white; font-weight:bold; letter-spacing:2px; margin-bottom:15px;">WWW.FOTV.COM</div>
     <div class="legal-notice">
         © 2026 FOTV Media Networks. All Rights Reserved. <br>
         Registered Trademark: <strong>fotv® (Class 35)</strong> | Intellectual Property Protected Worldwide. <br>
