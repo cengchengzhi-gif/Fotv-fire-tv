@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV® 火视网 - INITIALIZED</title>
+    <title>fotv.com® 火视网 - INITIALIZED</title>
     <style>
         :root {
             --mars-red: #E60012;
@@ -22,6 +22,7 @@
             height: 100%;
         }
 
+        /* 宇宙深处发光背景 */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -48,15 +49,15 @@
             position: relative;
         }
 
-        /* 电视燃烧标识 - 动态 SVG */
+        /* 标识：燃烧的金色电视 */
         .hero-logo-svg {
-            height: 280px; /* 标识加大 */
+            height: 220px; 
             width: auto;
-            filter: drop-shadow(0 0 30px rgba(230, 0, 18, 0.3));
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
             z-index: 2;
         }
 
-        /* 火焰真实燃烧滤镜动效 */
+        /* 真实火焰燃烧滤镜 */
         .fire-top {
             fill: var(--mars-red);
             filter: url(#realFire);
@@ -64,63 +65,38 @@
         }
 
         @keyframes flicker {
-            0% { opacity: 0.9; transform: scaleY(1); }
-            100% { opacity: 1; transform: scaleY(1.05); }
+            0% { opacity: 0.8; transform: translateY(0); }
+            100% { opacity: 1; transform: translateY(-2px); }
         }
 
-        /* 徽章金色底座 */
-        .shield-base {
-            fill: url(#goldGradient);
-            stroke: #332200;
-            stroke-width: 1;
-        }
-
-        /* 品牌文字布局：紧凑对齐 */
+        /* 品牌文字：极简对齐 */
         .hero-title-text {
-            margin-top: -100px; /* 电视与底座极致靠拢 */
+            margin-top: 30px; 
             position: relative;
             z-index: 3;
         }
 
         .super-domain {
-            font-size: 42pt; 
+            font-size: 48pt; 
             font-weight: 900;
             letter-spacing: -1px;
             margin: 0;
             color: #ffffff;
-            text-transform: uppercase;
-            line-height: 1;
+            text-transform: lowercase; /* 遵循全小写品牌规范 */
+            line-height: 1.1;
         }
 
         .chinese-brand {
-            font-size: 22pt;
+            font-size: 24pt;
             font-weight: bold;
             color: var(--mars-red);
             letter-spacing: 15px;
-            margin-top: 8px;
+            margin-top: 10px;
             text-indent: 15px;
             opacity: 0.95;
         }
 
-        /* 宣传口号 */
-        .promo-text {
-            margin-top: 60px;
-            font-size: 15pt;
-            font-weight: 200;
-            color: #444;
-            letter-spacing: 6px;
-            background: linear-gradient(90deg, #222, #fff, #222);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 5s linear infinite;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        /* 底部置底区域 */
+        /* 底部信息 */
         footer {
             position: absolute;
             bottom: 0;
@@ -129,7 +105,6 @@
             text-align: center;
         }
 
-        /* 邮箱：极简、小写、深灰色 */
         .contact-email {
             display: block;
             font-size: 8pt;
@@ -145,20 +120,19 @@
         }
 
         .legal-notice {
-            font-size: 7.5pt;
+            font-size: 7pt;
             color: var(--legal-gray);
             max-width: 900px;
             margin: 0 auto;
-            line-height: 2;
+            line-height: 2.2;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         @media (max-width: 768px) {
-            .hero-logo-svg { height: 180px; }
-            .super-domain { font-size: 28pt; }
-            .chinese-brand { font-size: 16pt; }
-            .hero-title-text { margin-top: -60px; }
+            .hero-logo-svg { height: 160px; }
+            .super-domain { font-size: 32pt; }
+            .chinese-brand { font-size: 18pt; }
         }
     </style>
 </head>
@@ -169,51 +143,52 @@
 <div class="container">
     <div class="hero-section">
         <div class="brand-hub">
-            <svg class="hero-logo-svg" viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg">
+            <svg class="hero-logo-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <linearGradient id="goldCase" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" style="stop-color:#FFD700" />
-                        <stop offset="50%" style="stop-color:#C5A059" />
-                        <stop offset="100%" style="stop-color:#8B6508" />
+                        <stop offset="100%" style="stop-color:#B8860B" />
                     </linearGradient>
                     
                     <filter id="realFire">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="1">
-                            <animate attributeName="seed" from="1" to="100" dur="1.5s" repeatCount="indefinite" />
+                        <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" seed="1">
+                            <animate attributeName="seed" from="1" to="100" dur="2s" repeatCount="indefinite" />
                         </feTurbulence>
-                        <feDisplacementMap in="SourceGraphic" scale="12" />
+                        <feDisplacementMap in="SourceGraphic" scale="10" />
                     </filter>
                 </defs>
 
-                <path class="fire-top" d="M140 100 Q160 30 200 60 T260 100 L240 120 L160 120 Z" />
+                <path class="fire-top" d="M80 60 Q120 -10 160 60 L150 75 L90 75 Z" />
                 
-                <rect x="130" y="110" width="140" height="100" rx="15" fill="#C5A059" stroke="#FFD700" stroke-width="2" />
-                <rect x="142" y="122" width="100" height="76" rx="8" fill="#000" />
+                <rect x="50" y="70" width="140" height="100" rx="15" fill="url(#goldCase)" />
+                <rect x="62" y="82" width="105" height="76" rx="8" fill="#000" />
                 
-                <polygon points="205,160 185,145 185,175" fill="white" />
+                <polygon points="125,120 105,105 105,135" fill="url(#goldCase)" />
                 
-                <line x1="200" y1="110" x2="160" y2="70" stroke="#FFD700" stroke-width="2" />
-                <line x1="200" y1="110" x2="240" y2="70" stroke="#FFD700" stroke-width="2" />
-
-                <path class="shield-base" d="M50,230 Q200,210 350,230 L370,280 Q200,340 30,280 Z" />
+                <circle cx="178" cy="95" r="5" fill="#332200" />
+                <circle cx="178" cy="115" r="5" fill="#332200" />
+                
+                <line x1="120" y1="70" x2="90" y2="30" stroke="#FFD700" stroke-width="2" />
+                <line x1="120" y1="70" x2="150" y2="30" stroke="#FFD700" stroke-width="2" />
             </svg>
             
             <div class="hero-title-text">
-                <h1 class="super-domain">FOTV.COM</h1>
+                <h1 class="super-domain">fotv.com</h1>
                 <div class="chinese-brand">火视网</div>
             </div>
         </div>
 
-        <div class="promo-text">热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED</div>
+        <div style="margin-top: 50px; font-size: 14pt; color: #222; letter-spacing: 5px;">
+            热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED
+        </div>
     </div>
 </div>
 
 <footer>
     <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
-    
     <div class="legal-notice">
-        © 2026 FOTV MEDIA NETWORKS | FOTV.COM | FOTV® (CLASS 35) <br>
-        PROTECTED IN BEIJING / LONDON / SILICON VALLEY
+        © 2026 fotv media networks | fotv.com | fotv® (class 35) <br>
+        protected in beijing / london / silicon valley
     </div>
 </footer>
 
