@@ -39,12 +39,16 @@
             padding-top: 15vh;
         }
 
-        /* 品牌核心区 */
+        /* 核心品牌徽章容器 */
         .brand-hub {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center; /* 几何对齐居中 */
             margin-bottom: 60px;
+            position: relative;
+
+            /* 关键：视觉对齐修正，标识向左移动一點点，看起來居中 */
+            margin-left: -3px; /* 负边距实现向左移动 */
         }
 
         /* 燃烧标识容器 */
@@ -103,7 +107,7 @@
             opacity: 0.9;
         }
 
-        /* 热门短剧宣传 */
+        /* 热门短剧宣传文字（金色发光） */
         .promo-text {
             margin-top: 50px;
             font-size: 15pt;
@@ -162,6 +166,7 @@
             .chinese-brand { font-size: 16pt; }
             .container { padding-top: 10vh; }
             footer { position: relative; margin-top: 100px; }
+            .brand-hub { margin-left: 0; } /* 移动端回归居中 */
         }
     </style>
 </head>
