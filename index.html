@@ -3,122 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV® 火视网 - MARS TV INITIALIZED</title>
+    <title>FOTV.com 火视网 - 全球短剧赛道 INITIALIZED</title>
     <style>
         :root {
-            --mars-red: #E60012;
-            --mars-orange: #FF4D00;
-            --deep-black: #000000;
-            --legal-gray: #333;
+            --gold-light: #FFD700;
+            --gold-med: #C5A059;
+            --gold-dark: #8B6508;
+            --fire-red: #ff3300;
+            --fire-orange: #ff9900;
+            --black-bg: #000000;
         }
 
         body, html {
             margin: 0;
             padding: 0;
             font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', sans-serif;
-            background-color: var(--deep-black);
+            background-color: var(--black-bg);
             color: white;
-            overflow-x: hidden;
+            overflow: hidden;
             height: 100%;
         }
 
-        /* 宇宙深处发光背景 */
+        /* 极致简约的深色背景，无大块红色圆圈 */
         .bg-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #250000 0%, #000000 100%);
+            background: radial-gradient(circle, #050000 0%, #000000 100%);
             z-index: -1;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 12vh;
-        }
-
-        /* 品牌核心区 */
-        .brand-hub {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 60px;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* 核心品牌徽章容器 */
+        .brand-hub {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
         }
 
-        /* 火星电视标识容器 */
-        .logo-wrapper {
-            position: relative;
-            margin-bottom: -40px; /* 极致靠拢 */
-            z-index: 2;
+        /* 复杂的 3D 雕刻风格 SVG */
+        .emblem-svg {
+            width: 400px; /* 标识加大 */
+            height: auto;
+            filter: drop-shadow(0 0 40px rgba(255, 60, 0, 0.4)); /* 柔和的发光 */
         }
 
-        .hero-logo-svg {
-            height: 240px; /* 标识加大 */
-            width: auto;
-            filter: drop-shadow(0 0 50px rgba(230, 0, 18, 0.5));
+        /* 金色材质的样式 */
+        .gold-filigree { fill: var(--gold-dark); }
+        .gold-main { fill: url(#goldGrad); }
+        .gold-accent { fill: var(--gold-light); }
+
+        /* 火焰粒子特效：象火在燃烧 */
+        .fire-particle {
+            fill: url(#fireGrad);
+            opacity: 0;
+            animation: fireBurning 3s infinite linear;
         }
 
-        /* 电视机外壳 */
-        .tv-case {
-            fill: #1a0000;
-            stroke: var(--mars-red);
-            stroke-width: 2;
+        /* 火焰核心流动感 */
+        @keyframes fireBurning {
+            0% { transform: translateY(0px) scale(1); opacity: 0; }
+            10% { transform: translateY(-5px) scale(1.1); opacity: 1; }
+            80% { transform: translateY(-30px) scale(1.3); opacity: 0.8; }
+            100% { transform: translateY(-50px) scale(1); opacity: 0; }
         }
 
-        /* 屏幕内部火星熔岩感 */
-        .tv-screen {
-            fill: url(#marsScreenGrad);
-        }
-
-        /* 熊熊燃烧的大气火焰 */
-        .fire-aura {
-            fill: var(--mars-red);
-            mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-            -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-            mask-size: 100% 200%;
-            -webkit-mask-size: 100% 200%;
-            animation: marsFireFlow 2s infinite linear;
-        }
-
-        @keyframes marsFireFlow {
-            from { mask-position: 0% 100%; -webkit-mask-position: 0% 100%; }
-            to { mask-position: 0% -100%; -webkit-mask-position: 0% -100%; }
-        }
-
-        /* 域名：小点、大写、靠拢 */
-        .super-domain {
-            font-size: 38pt; 
+        /* 文本材质的样式 */
+        .text-fotv {
+            font-size: 50px;
             font-weight: 900;
-            letter-spacing: 2px;
-            margin: 0;
-            color: #ffffff;
-            text-transform: uppercase;
-            opacity: 0.95;
-            z-index: 1;
+            font-family: 'Arial Black', Gadget, sans-serif;
+            fill: url(#goldGrad);
+            letter-spacing: -2px;
         }
 
-        /* 中文品牌名 */
-        .chinese-brand {
-            font-size: 20pt;
+        .text-chinese {
+            font-size: 26px;
             font-weight: bold;
-            color: var(--mars-red);
+            fill: url(#goldGrad);
             letter-spacing: 12px;
-            margin-top: 5px;
-            text-indent: 12px;
-            opacity: 0.9;
         }
 
-        /* 宣传口号：流光效果 */
+        /* 热门短剧宣传文字 */
         .promo-text {
             margin-top: 50px;
-            font-size: 15pt;
-            font-weight: 200;
-            color: #666;
-            letter-spacing: 6px;
+            font-size: 14pt;
+            font-weight: 300;
+            color: #ddd;
+            letter-spacing: 5px;
             background: linear-gradient(90deg, #333, #fff, #333);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -130,47 +114,38 @@
             to { background-position: 200% center; }
         }
 
-        /* 底部置底区域 */
-        footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 60px 0;
-            background: linear-gradient(to top, #000 0%, transparent 100%);
-            text-align: center;
+        .contact-section {
+            margin-top: 80px;
+            padding-bottom: 80px;
         }
 
-        /* 邮箱小写且字号小 */
         .contact-email {
-            display: block;
-            font-size: 9pt;
-            color: #444;
+            font-size: 18pt;
+            color: #ffffff;
             text-decoration: none;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+            font-weight: 200;
             transition: 0.3s;
         }
 
         .contact-email:hover {
-            color: var(--mars-red);
+            color: var(--fire-red);
         }
 
-        .legal-notice {
+        footer {
+            position: absolute;
+            bottom: 40px;
             font-size: 8pt;
-            color: var(--legal-gray);
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 2;
-            letter-spacing: 1px;
+            color: #333;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
+        /* 适配移动端 */
         @media (max-width: 768px) {
-            .hero-logo-svg { height: 160px; }
-            .super-domain { font-size: 28pt; margin-top: -25px; }
+            .emblem-svg { width: 250px; }
+            .super-domain { font-size: 26pt; }
             .chinese-brand { font-size: 16pt; }
-            .container { padding-top: 10vh; }
-            footer { position: relative; margin-top: 100px; }
+            .promo-text { font-size: 12pt; }
         }
     </style>
 </head>
@@ -181,48 +156,72 @@
 <div class="container">
     <div class="hero-section">
         <div class="brand-hub">
-            <div class="logo-wrapper">
-                <svg class="hero-logo-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="marsScreenGrad" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" style="stop-color:#FF6600" />
-                            <stop offset="100%" style="stop-color:#330000" />
-                        </radialGradient>
-                    </defs>
+            <svg class="emblem-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FFD700" />
+                        <stop offset="50%" style="stop-color:#C5A059" />
+                        <stop offset="100%" style="stop-color:#8B6508" />
+                    </linearGradient>
                     
-                    <path class="fire-aura" d="M120 10 Q150 -10 180 20 T220 30 Q240 70 200 110 L120 150 L40 110 Q0 70 20 30 T70 10 Z" />
+                    <linearGradient id="fireGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FFD700; stop-opacity:0" />
+                        <stop offset="20%" style="stop-color:#FF9900; stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#FF3300; stop-opacity:0" />
+                    </linearGradient>
                     
-                    <rect class="tv-case" x="50" y="40" width="140" height="100" rx="15" />
-                    
-                    <rect class="tv-screen" x="60" y="50" width="105" height="80" rx="10" />
-                    
-                    <circle fill="#333" cx="178" cy="65" r="6" />
-                    <circle fill="#333" cx="178" cy="85" r="6" />
-                    <rect fill="#333" x="172" y="105" width="12" height="15" rx="2" />
-                    
-                    <line x1="120" y1="40" x2="90" y2="10" stroke="white" stroke-width="2" />
-                    <line x1="120" y1="40" x2="150" y2="10" stroke="white" stroke-width="2" />
-                    
-                    <polygon points="125,90 100,75 100,105" fill="white" style="filter: drop-shadow(0 0 5px white);" />
-                </svg>
-            </div>
+                    <filter id="screenGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="6" result="blur"/>
+                        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                </defs>
 
-            <h1 class="super-domain">FOTV.COM</h1>
-            <div class="chinese-brand">火视网</div>
+                <circle class="gold-filigree" cx="250" cy="250" r="230" stroke="#C5A059" stroke-width="4" fill="none"/>
+
+                <path class="gold-main" d="M100,320 Q120,380 250,380 Q380,380 400,320 Q410,290 250,290 Q90,290 100,320 Z" />
+                <path class="gold-accent" d="M110,325 Q130,370 250,370 Q370,370 390,325" fill="none" stroke="#FFD700" stroke-width="2"/>
+
+                <text x="250" y="345" class="text-fotv" text-anchor="middle">FOTV.com</text>
+                <text x="250" y="375" class="text-chinese" text-anchor="middle">火视网</text>
+
+                <g class="movie-elements" transform="translate(180, 180)">
+                    <circle cx="20" cy="20" r="20" fill="#8B6508"/>
+                    <circle cx="20" cy="20" r="15" fill="none" stroke="#FFD700" stroke-width="2"/>
+                    <rect x="15" y="15" width="10" height="10" fill="#FFD700"/>
+                    <circle cx="50" cy="40" r="25" fill="#C5A059"/>
+                
+                    <rect x="0" y="-30" width="30" height="20" fill="#8B6508" rx="3"/>
+                    <rect x="5" y="-25" width="20" height="10" fill="#FFD700" rx="1"/>
+                
+                    <g transform="translate(100, -60)">
+                        <path fill="#FFD700" d="M0,0 Q20,-10 30,0 L15,15 Z"/>
+                    </g>
+                </g>
+
+                <g class="tv-set" transform="translate(250, 200)">
+                    <ellipse class="fire-particle" cx="0" cy="-40" rx="30" ry="60" style="animation-delay: 0s;"/>
+                    <ellipse class="fire-particle" cx="-20" cy="-45" rx="25" ry="55" style="animation-delay: 0.5s;"/>
+                    <ellipse class="fire-particle" cx="20" cy="-45" rx="25" ry="55" style="animation-delay: 1.2s;"/>
+
+                    <rect x="-60" y="-40" width="120" height="85" rx="15" fill="#C5A059" stroke="#FFD700" stroke-width="3"/>
+                    
+                    <rect x="-50" y="-30" width="100" height="65" rx="10" fill="#050000" stroke="#FF3300" stroke-width="2" filter="url(#screenGlow)"/>
+                    
+                    <polygon points="10,0 -15,-15 -15,15" fill="#FFD700"/>
+                </g>
+            </svg>
         </div>
 
-        <div class="promo-text">热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED</div>
+        <p class="promo-text">热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED</p>
+    </div>
+
+    <div class="contact-section">
+        <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
     </div>
 </div>
 
 <footer>
-    <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
-    
-    <div class="legal-notice">
-        © 2026 FOTV MEDIA NETWORKS. ALL RIGHTS RESERVED. <br>
-        GLOBAL ASSET: FOTV.COM | REGISTERED TRADEMARK: FOTV® (CLASS 35) <br>
-        PROTECTED IN BEIJING / LONDON / SILICON VALLEY
-    </div>
+    © 2026 FOTV MEDIA NETWORKS | FOTV.COM | REGISTERED TRADEMARK FOTV®
 </footer>
 
 </body>
