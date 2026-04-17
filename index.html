@@ -7,8 +7,8 @@
     <style>
         :root {
             --mars-red: #E60012;
-            --mars-glow: rgba(255, 69, 0, 0.35); 
-            --white-micro-glow: rgba(255, 255, 255, 0.25);
+            --mars-glow: rgba(255, 69, 0, 0.3); 
+            --white-micro-glow: rgba(255, 255, 255, 0.2);
             --tech-purple: #C084FC;
             --tech-silver: #FFFFFF;
             --deep-black: #000000;
@@ -43,7 +43,7 @@
             padding-top: 6vh; /* 极致向上聚合 */
         }
 
-        /* 核心品牌勋章 */
+        /* 核心品牌区 */
         .brand-hub {
             display: flex;
             flex-direction: column;
@@ -63,7 +63,7 @@
         .mars-rotating-core {
             fill: url(#marsSphere);
             transform-origin: 120px 120px;
-            animation: marsSelfRotate 20s infinite linear;
+            animation: marsSelfRotate 25s infinite linear;
         }
 
         @keyframes marsSelfRotate {
@@ -100,7 +100,6 @@
             opacity: 0.9;
         }
 
-        /* 品牌网络信息 */
         .network-info {
             margin-top: 15px;
             font-size: 9pt;
@@ -124,15 +123,15 @@
             letter-spacing: 5px;
             line-height: 2.2;
             text-transform: uppercase;
-            /* 真空微发光 */
-            text-shadow: 0 0 5px var(--mars-glow);
-            opacity: 0.85;
-            animation: narrativeFlicker 5s infinite alternate;
+            /* 真空霓虹微光 */
+            text-shadow: 0 0 4px var(--mars-glow);
+            opacity: 0.8;
+            animation: narrativePulse 5s infinite alternate;
         }
 
-        @keyframes narrativeFlicker {
-            from { opacity: 0.7; text-shadow: 0 0 3px var(--mars-glow); }
-            to { opacity: 0.95; text-shadow: 0 0 8px rgba(255, 69, 0, 0.6); }
+        @keyframes narrativePulse {
+            from { opacity: 0.75; text-shadow: 0 0 3px var(--mars-glow); }
+            to { opacity: 0.95; text-shadow: 0 0 8px rgba(255, 69, 0, 0.5); }
         }
 
         .sub-narrative {
@@ -142,6 +141,7 @@
             line-height: 2;
             margin-top: 30px;
             font-weight: 200;
+            /* 极致微发光 */
             text-shadow: 0 0 2px var(--white-micro-glow);
         }
 
@@ -154,30 +154,6 @@
             text-align: center;
         }
 
-        /* 亮白微光邮箱 */
-        .contact-email {
-            display: block;
-            font-size: 10pt;
-            color: #ffffff;
-            text-decoration: none;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-weight: 300;
-            text-shadow: 0 0 5px var(--white-micro-glow);
-            transition: 0.3s;
-            animation: emailPulse 4s infinite alternate;
-        }
-
-        @keyframes emailPulse {
-            from { opacity: 0.7; text-shadow: 0 0 3px var(--white-micro-glow); }
-            to { opacity: 1; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
-        }
-
-        .contact-email:hover {
-            color: #fff;
-            text-shadow: 0 0 15px var(--tech-purple);
-        }
-
         .legal-notice {
             font-size: 7pt;
             color: var(--legal-gray);
@@ -186,6 +162,30 @@
             line-height: 2;
             letter-spacing: 1px;
             text-transform: uppercase;
+            margin-bottom: 25px; /* 为底部的邮箱留出间距 */
+        }
+
+        /* 亮白微光邮箱：放置于最底部 */
+        .contact-email {
+            display: inline-block;
+            font-size: 10pt;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-weight: 300;
+            text-shadow: 0 0 6px var(--white-micro-glow);
+            transition: 0.3s;
+            animation: emailGlowPulse 4s infinite alternate;
+        }
+
+        @keyframes emailGlowPulse {
+            from { opacity: 0.7; text-shadow: 0 0 4px var(--white-micro-glow); }
+            to { opacity: 1; text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
+        }
+
+        .contact-email:hover {
+            color: #fff;
+            text-shadow: 0 0 15px var(--tech-purple);
         }
 
         @media (max-width: 768px) {
@@ -193,6 +193,7 @@
             .super-domain { font-size: 20pt; }
             .glow-statement { font-size: 10pt; padding: 0 20px; }
             .container { padding-top: 5vh; }
+            footer { position: relative; margin-top: 100px; }
         }
     </style>
 </head>
@@ -242,7 +243,7 @@
                 Mars is not a destination, but a preservation of the human fire.
             </div>
             <div class="sub-narrative">
-                从地球摇篮到红色荒漠，FOTV 记录文明跨越星际的每一帧闪烁。<br>
+                从地球摇篮到红色荒漠，FOTV® 记录文明跨越星际的每一帧闪烁。<br>
                 作为跨行星物种的影像协议，我们点燃第一束来自火星的意识火种。
             </div>
         </div>
@@ -250,12 +251,12 @@
 </div>
 
 <footer>
-    <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
-    
     <div class="legal-notice">
         © 2026 FOTV MEDIA NETWORKS | MARS SECTOR | FOTV® (CLASS 35) <br>
         INITIALIZING MULTI-PLANETARY CONTENT PROTOCOL
     </div>
+
+    <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
 </footer>
 
 </body>
