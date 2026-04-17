@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV® 火视网 - 全球热门短剧 INITIALIZED</title>
+    <title>FOTV® 火视网 - MARS TV INITIALIZED</title>
     <style>
         :root {
             --mars-red: #E60012;
-            --mars-dark: #660000;
             --mars-orange: #FF4D00;
             --deep-black: #000000;
             --legal-gray: #333;
@@ -38,51 +37,59 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 15vh;
+            padding-top: 12vh;
         }
 
-        /* 核心品牌徽章容器 */
+        /* 品牌核心区 */
         .brand-hub {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 60px;
             position: relative;
-            /* 视觉对齐微调 */
-            margin-left: -2px; 
         }
 
-        /* 火星标识容器 */
+        /* 火星电视标识容器 */
         .logo-wrapper {
             position: relative;
-            margin-bottom: -30px; /* 极致靠拢 */
+            margin-bottom: -40px; /* 极致靠拢 */
             z-index: 2;
         }
 
         .hero-logo-svg {
-            height: 220px; /* 标识加大 */
-            width: 220px;
-            filter: drop-shadow(0 0 50px rgba(230, 0, 18, 0.6));
+            height: 240px; /* 标识加大 */
+            width: auto;
+            filter: drop-shadow(0 0 50px rgba(230, 0, 18, 0.5));
         }
 
-        /* 火星实体纹理 */
-        .mars-sphere {
-            fill: url(#marsGradient);
+        /* 电视机外壳 */
+        .tv-case {
+            fill: #1a0000;
+            stroke: var(--mars-red);
+            stroke-width: 2;
         }
 
-        /* 熊熊燃烧的大气层动效 */
-        .burning-aura {
-            fill: var(--mars-orange);
-            /* 组合动画：不规则扭曲燃烧 */
-            animation: marsFlicker 0.15s infinite alternate;
+        /* 屏幕内部火星熔岩感 */
+        .tv-screen {
+            fill: url(#marsScreenGrad);
         }
 
-        @keyframes marsFlicker {
-            from { filter: url(#fireDistortion) blur(2px); opacity: 0.8; }
-            to { filter: url(#fireDistortion) blur(4px); opacity: 1; }
+        /* 熊熊燃烧的大气火焰 */
+        .fire-aura {
+            fill: var(--mars-red);
+            mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            mask-size: 100% 200%;
+            -webkit-mask-size: 100% 200%;
+            animation: marsFireFlow 2s infinite linear;
         }
 
-        /* 域名小点大写 */
+        @keyframes marsFireFlow {
+            from { mask-position: 0% 100%; -webkit-mask-position: 0% 100%; }
+            to { mask-position: 0% -100%; -webkit-mask-position: 0% -100%; }
+        }
+
+        /* 域名：小点、大写、靠拢 */
         .super-domain {
             font-size: 38pt; 
             font-weight: 900;
@@ -94,6 +101,7 @@
             z-index: 1;
         }
 
+        /* 中文品牌名 */
         .chinese-brand {
             font-size: 20pt;
             font-weight: bold;
@@ -104,12 +112,12 @@
             opacity: 0.9;
         }
 
-        /* 宣传文字 */
+        /* 宣传口号：流光效果 */
         .promo-text {
             margin-top: 50px;
             font-size: 15pt;
             font-weight: 200;
-            color: #555;
+            color: #666;
             letter-spacing: 6px;
             background: linear-gradient(90deg, #333, #fff, #333);
             background-size: 200% auto;
@@ -122,7 +130,7 @@
             to { background-position: 200% center; }
         }
 
-        /* 底部区域 */
+        /* 底部置底区域 */
         footer {
             position: absolute;
             bottom: 0;
@@ -132,6 +140,7 @@
             text-align: center;
         }
 
+        /* 邮箱小写且字号小 */
         .contact-email {
             display: block;
             font-size: 9pt;
@@ -157,8 +166,8 @@
         }
 
         @media (max-width: 768px) {
-            .hero-logo-svg { height: 160px; width: 160px; }
-            .super-domain { font-size: 28pt; margin-top: -20px; }
+            .hero-logo-svg { height: 160px; }
+            .super-domain { font-size: 28pt; margin-top: -25px; }
             .chinese-brand { font-size: 16pt; }
             .container { padding-top: 10vh; }
             footer { position: relative; margin-top: 100px; }
@@ -173,27 +182,28 @@
     <div class="hero-section">
         <div class="brand-hub">
             <div class="logo-wrapper">
-                <svg class="hero-logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <svg class="hero-logo-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                        <radialGradient id="marsGradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+                        <radialGradient id="marsScreenGrad" cx="50%" cy="50%" r="50%">
                             <stop offset="0%" style="stop-color:#FF6600" />
-                            <stop offset="60%" style="stop-color:#E60012" />
                             <stop offset="100%" style="stop-color:#330000" />
                         </radialGradient>
-                        
-                        <filter id="fireDistortion">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="1">
-                                <animate attributeName="seed" from="1" to="100" dur="2s" repeatCount="indefinite" />
-                            </feTurbulence>
-                            <feDisplacementMap in="SourceGraphic" scale="15" />
-                        </filter>
                     </defs>
-
-                    <circle class="burning-aura" cx="100" cy="100" r="85" />
                     
-                    <circle class="mars-sphere" cx="100" cy="100" r="75" />
+                    <path class="fire-aura" d="M120 10 Q150 -10 180 20 T220 30 Q240 70 200 110 L120 150 L40 110 Q0 70 20 30 T70 10 Z" />
                     
-                    <polygon points="115,100 90,85 90,115" fill="white" style="filter: drop-shadow(0 0 5px white);" />
+                    <rect class="tv-case" x="50" y="40" width="140" height="100" rx="15" />
+                    
+                    <rect class="tv-screen" x="60" y="50" width="105" height="80" rx="10" />
+                    
+                    <circle fill="#333" cx="178" cy="65" r="6" />
+                    <circle fill="#333" cx="178" cy="85" r="6" />
+                    <rect fill="#333" x="172" y="105" width="12" height="15" rx="2" />
+                    
+                    <line x1="120" y1="40" x2="90" y2="10" stroke="white" stroke-width="2" />
+                    <line x1="120" y1="40" x2="150" y2="10" stroke="white" stroke-width="2" />
+                    
+                    <polygon points="125,90 100,75 100,105" fill="white" style="filter: drop-shadow(0 0 5px white);" />
                 </svg>
             </div>
 
