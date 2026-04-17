@@ -7,7 +7,8 @@
     <style>
         :root {
             --mars-red: #E60012;
-            --gold-shine: #FFD700;
+            --tech-purple-light: #C084FC; /* cai.com 同款浅紫 */
+            --tech-purple-dark: #6366F1;  /* cai.com 同款深紫 */
             --deep-black: #000000;
             --legal-gray: #1a1a1a;
         }
@@ -15,21 +16,21 @@
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', sans-serif;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--deep-black);
             color: white;
             overflow-x: hidden;
             height: 100%;
         }
 
-        /* 宇宙深处发光背景 */
+        /* 宇宙深空背景 */
         .bg-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #100000 0%, #000000 100%);
+            background: radial-gradient(circle at center, #0a0010 0%, #000000 100%);
             z-index: -1;
         }
 
@@ -49,11 +50,11 @@
             position: relative;
         }
 
-        /* 标识：燃烧的金色电视 */
+        /* 标识：燃烧的金色电视（去背景火） */
         .hero-logo-svg {
-            height: 220px; 
+            height: 200px; 
             width: auto;
-            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
+            filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.2));
             z-index: 2;
         }
 
@@ -69,7 +70,7 @@
             100% { opacity: 1; transform: translateY(-2px); }
         }
 
-        /* 品牌文字：极简对齐 */
+        /* 品牌文字：完美移植 cai.com 风格 */
         .hero-title-text {
             margin-top: 30px; 
             position: relative;
@@ -77,26 +78,45 @@
         }
 
         .super-domain {
-            font-size: 48pt; 
+            font-size: 52pt; 
             font-weight: 900;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
             margin: 0;
-            color: #ffffff;
-            text-transform: lowercase; /* 遵循全小写品牌规范 */
-            line-height: 1.1;
+            
+            /* 渐变色设置 */
+            background: linear-gradient(180deg, #FFFFFF 30%, var(--tech-purple-light) 60%, var(--tech-purple-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            text-transform: lowercase; /* 全小写 */
+            line-height: 1;
+            
+            /* 紫色微光 */
+            filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.3));
         }
 
         .chinese-brand {
             font-size: 24pt;
             font-weight: bold;
             color: var(--mars-red);
-            letter-spacing: 15px;
-            margin-top: 10px;
-            text-indent: 15px;
-            opacity: 0.95;
+            letter-spacing: 16px;
+            margin-top: 12px;
+            text-indent: 16px;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 8px rgba(230, 0, 18, 0.4));
         }
 
-        /* 底部信息 */
+        /* 宣传口号：微缩暗光 */
+        .promo-text {
+            margin-top: 60px;
+            font-size: 14pt;
+            font-weight: 200;
+            color: #333;
+            letter-spacing: 5px;
+            opacity: 0.6;
+        }
+
+        /* 底部置底区域 */
         footer {
             position: absolute;
             bottom: 0;
@@ -116,11 +136,11 @@
         }
 
         .contact-email:hover {
-            color: var(--mars-red);
+            color: var(--tech-purple-light);
         }
 
         .legal-notice {
-            font-size: 7pt;
+            font-size: 7.5pt;
             color: var(--legal-gray);
             max-width: 900px;
             margin: 0 auto;
@@ -130,8 +150,8 @@
         }
 
         @media (max-width: 768px) {
-            .hero-logo-svg { height: 160px; }
-            .super-domain { font-size: 32pt; }
+            .hero-logo-svg { height: 140px; }
+            .super-domain { font-size: 36pt; }
             .chinese-brand { font-size: 18pt; }
         }
     </style>
@@ -165,9 +185,6 @@
                 
                 <polygon points="125,120 105,105 105,135" fill="url(#goldCase)" />
                 
-                <circle cx="178" cy="95" r="5" fill="#332200" />
-                <circle cx="178" cy="115" r="5" fill="#332200" />
-                
                 <line x1="120" y1="70" x2="90" y2="30" stroke="#FFD700" stroke-width="2" />
                 <line x1="120" y1="70" x2="150" y2="30" stroke="#FFD700" stroke-width="2" />
             </svg>
@@ -178,7 +195,7 @@
             </div>
         </div>
 
-        <div style="margin-top: 50px; font-size: 14pt; color: #222; letter-spacing: 5px;">
+        <div class="promo-text">
             热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED
         </div>
     </div>
