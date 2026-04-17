@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fotv.com® 火视网 - INITIALIZED</title>
+    <title>FOTV.COM® 火视网 - INITIALIZED</title>
     <style>
         :root {
             --mars-red: #E60012;
-            --tech-purple-light: #C084FC; /* cai.com 同款浅紫 */
-            --tech-purple-dark: #6366F1;  /* cai.com 同款深紫 */
+            --tech-purple: #C084FC; /* cai.com 同款浅紫 */
+            --tech-silver: #FFFFFF;
             --deep-black: #000000;
             --legal-gray: #1a1a1a;
         }
@@ -50,27 +50,27 @@
             position: relative;
         }
 
-        /* 标识：燃烧的金色电视（去背景火） */
+        /* 标识：燃烧的金色电视（无背景火，无底座） */
         .hero-logo-svg {
-            height: 200px; 
+            height: 220px; 
             width: auto;
-            filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.2));
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.2));
             z-index: 2;
         }
 
-        /* 真实火焰燃烧滤镜 */
+        /* 火焰真实燃烧滤镜 */
         .fire-top {
             fill: var(--mars-red);
             filter: url(#realFire);
-            animation: flicker 0.1s infinite alternate;
+            animation: flicker 0.12s infinite alternate;
         }
 
         @keyframes flicker {
-            0% { opacity: 0.8; transform: translateY(0); }
-            100% { opacity: 1; transform: translateY(-2px); }
+            0% { opacity: 0.8; transform: translateY(0) scaleY(1); }
+            100% { opacity: 1; transform: translateY(-2px) scaleY(1.05); }
         }
 
-        /* 品牌文字：完美移植 cai.com 风格 */
+        /* 品牌文字：移植 cai.com 渐变风格 + 大写域名 */
         .hero-title-text {
             margin-top: 30px; 
             position: relative;
@@ -78,21 +78,19 @@
         }
 
         .super-domain {
-            font-size: 52pt; 
+            font-size: 50pt; 
             font-weight: 900;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
             margin: 0;
             
-            /* 渐变色设置 */
-            background: linear-gradient(180deg, #FFFFFF 30%, var(--tech-purple-light) 60%, var(--tech-purple-dark) 100%);
+            /* 渐变色：银色到紫色的高维度转换 */
+            background: linear-gradient(180deg, var(--tech-silver) 30%, var(--tech-purple) 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             
-            text-transform: lowercase; /* 全小写 */
-            line-height: 1;
-            
-            /* 紫色微光 */
-            filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.3));
+            text-transform: uppercase; /* 强制大写 */
+            line-height: 1.1;
+            filter: drop-shadow(0 0 10px rgba(192, 132, 252, 0.3));
         }
 
         .chinese-brand {
@@ -102,21 +100,11 @@
             letter-spacing: 16px;
             margin-top: 12px;
             text-indent: 16px;
-            opacity: 0.9;
+            opacity: 0.95;
             filter: drop-shadow(0 0 8px rgba(230, 0, 18, 0.4));
         }
 
-        /* 宣传口号：微缩暗光 */
-        .promo-text {
-            margin-top: 60px;
-            font-size: 14pt;
-            font-weight: 200;
-            color: #333;
-            letter-spacing: 5px;
-            opacity: 0.6;
-        }
-
-        /* 底部置底区域 */
+        /* 底部信息 */
         footer {
             position: absolute;
             bottom: 0;
@@ -136,7 +124,7 @@
         }
 
         .contact-email:hover {
-            color: var(--tech-purple-light);
+            color: var(--tech-purple);
         }
 
         .legal-notice {
@@ -150,9 +138,10 @@
         }
 
         @media (max-width: 768px) {
-            .hero-logo-svg { height: 140px; }
-            .super-domain { font-size: 36pt; }
+            .hero-logo-svg { height: 160px; }
+            .super-domain { font-size: 32pt; }
             .chinese-brand { font-size: 18pt; }
+            .container { padding-top: 10vh; }
         }
     </style>
 </head>
@@ -174,28 +163,31 @@
                         <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" seed="1">
                             <animate attributeName="seed" from="1" to="100" dur="2s" repeatCount="indefinite" />
                         </feTurbulence>
-                        <feDisplacementMap in="SourceGraphic" scale="10" />
+                        <feDisplacementMap in="SourceGraphic" scale="12" />
                     </filter>
                 </defs>
 
-                <path class="fire-top" d="M80 60 Q120 -10 160 60 L150 75 L90 75 Z" />
+                <path class="fire-top" d="M80 60 Q120 -15 160 60 L150 75 L90 75 Z" />
                 
                 <rect x="50" y="70" width="140" height="100" rx="15" fill="url(#goldCase)" />
                 <rect x="62" y="82" width="105" height="76" rx="8" fill="#000" />
                 
                 <polygon points="125,120 105,105 105,135" fill="url(#goldCase)" />
                 
-                <line x1="120" y1="70" x2="90" y2="30" stroke="#FFD700" stroke-width="2" />
-                <line x1="120" y1="70" x2="150" y2="30" stroke="#FFD700" stroke-width="2" />
+                <line x1="120" y1="70" x2="85" y2="25" stroke="#FFD700" stroke-width="2.5" />
+                <line x1="120" y1="70" x2="155" y2="25" stroke="#FFD700" stroke-width="2.5" />
+                
+                <circle cx="178" cy="95" r="5" fill="#332200" />
+                <circle cx="178" cy="115" r="5" fill="#332200" />
             </svg>
             
             <div class="hero-title-text">
-                <h1 class="super-domain">fotv.com</h1>
+                <h1 class="super-domain">FOTV.COM</h1>
                 <div class="chinese-brand">火视网</div>
             </div>
         </div>
 
-        <div class="promo-text">
+        <div style="margin-top: 50px; font-size: 14pt; color: #222; letter-spacing: 5px;">
             热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED
         </div>
     </div>
@@ -203,9 +195,10 @@
 
 <footer>
     <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
+    
     <div class="legal-notice">
-        © 2026 fotv media networks | fotv.com | fotv® (class 35) <br>
-        protected in beijing / london / silicon valley
+        © 2026 FOTV MEDIA NETWORKS | FOTV.COM | FOTV® (CLASS 35) <br>
+        PROTECTED IN BEIJING / LONDON / SILICON VALLEY
     </div>
 </footer>
 
