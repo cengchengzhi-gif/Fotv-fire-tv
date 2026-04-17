@@ -7,11 +7,11 @@
     <style>
         :root {
             --mars-red: #E60012;
-            --tech-purple-glow: rgba(192, 132, 252, 0.3); 
-            --white-micro-glow: rgba(255, 255, 255, 0.2);
+            --tech-purple-glow: rgba(192, 132, 252, 0.25); 
+            --dim-white-glow: rgba(255, 255, 255, 0.15);
             --tech-purple: #C084FC;
             --tech-silver: #FFFFFF;
-            --text-silver-dim: #dddddd;
+            --text-silver-dim: #bbbbbb;
             --deep-black: #000000;
             --legal-gray: #1a1a1a;
         }
@@ -41,7 +41,7 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 4vh; /* 极致向上聚合 */
+            padding-top: 5vh; 
         }
 
         /* 核心品牌勋章 */
@@ -101,7 +101,7 @@
             opacity: 0.95;
         }
 
-        /* 短剧分发叙事区：净化色彩，银白+银紫微光 */
+        /* 叙事区：银白+银紫微光 */
         .drama-narrative {
             margin-top: 50px; 
             max-width: 850px;
@@ -115,7 +115,6 @@
             color: var(--text-silver-dim); 
             letter-spacing: 6px;
             line-height: 2.2;
-            /* 真空冷光微发光 */
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.1), 0 0 10px var(--tech-purple-glow);
             opacity: 0.85;
             animation: narrativePulse 6s infinite alternate;
@@ -123,17 +122,16 @@
 
         @keyframes narrativePulse {
             from { opacity: 0.75; text-shadow: 0 0 4px rgba(255, 255, 255, 0.05); }
-            to { opacity: 1; text-shadow: 0 0 12px rgba(192, 132, 252, 0.2); }
+            to { opacity: 1; text-shadow: 0 0 10px rgba(192, 132, 252, 0.15); }
         }
 
         .sub-narrative {
             font-size: 9.5pt;
-            color: #555; /* 极其克制的灰色 */
+            color: #555; 
             letter-spacing: 3px;
             line-height: 2;
             margin-top: 30px;
             font-weight: 200;
-            text-shadow: 0 0 2px var(--white-micro-glow);
         }
 
         /* 底部区域 */
@@ -145,7 +143,6 @@
             text-align: center;
         }
 
-        /* 品牌网络信息：下沉页脚 */
         .footer-network-info {
             font-size: 8pt;
             color: #333; 
@@ -166,33 +163,31 @@
             margin-bottom: 25px;
         }
 
-        /* 亮白微光邮箱：视觉终点 */
-        .contact-email {
+        /* 合作联系：亮度调暗，微光处理 */
+        .contact-area {
             display: inline-block;
             font-size: 10pt;
-            color: #ffffff;
-            text-decoration: none;
+            color: #888; /* 基础文字调暗 */
             letter-spacing: 2px;
             font-weight: 300;
-            text-shadow: 0 0 6px var(--white-micro-glow);
-            transition: 0.3s;
-            animation: emailGlowPulse 4s infinite alternate;
         }
 
-        @keyframes emailGlowPulse {
-            from { opacity: 0.7; text-shadow: 0 0 3px var(--white-micro-glow); }
-            to { opacity: 1; text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
+        .contact-email {
+            color: #bbbbbb; /* 邮箱地址稍微亮一点点，但依然保持克制 */
+            text-decoration: none;
+            text-shadow: 0 0 4px var(--dim-white-glow);
+            transition: 0.3s;
         }
 
         .contact-email:hover {
-            color: #fff;
-            text-shadow: 0 0 15px var(--tech-purple);
+            color: #ffffff;
+            text-shadow: 0 0 12px var(--tech-purple);
         }
 
         @media (max-width: 768px) {
             .hero-logo-svg { height: 130px; }
             .super-domain { font-size: 20pt; }
-            .glow-statement { font-size: 11pt; padding: 0 20px; letter-spacing: 4px; }
+            .glow-statement { font-size: 11pt; padding: 0 20px; }
             footer { position: relative; margin-top: 80px; }
         }
     </style>
@@ -216,20 +211,15 @@
                         <stop offset="100%" style="stop-color:#330000" />
                     </radialGradient>
                 </defs>
-
                 <rect x="50" y="70" width="140" height="100" rx="15" fill="url(#goldCase)" />
                 <rect x="62" y="82" width="116" height="76" rx="8" fill="#000" />
-                
                 <circle class="mars-rotating-core" cx="120" cy="120" r="30" />
-                
                 <polygon points="128,120 115,110 115,130" fill="white" opacity="0.9" />
-                
                 <line x1="120" y1="70" x2="85" y2="25" stroke="#FFD700" stroke-width="2.5" />
                 <line x1="120" y1="70" x2="155" y2="25" stroke="#FFD700" stroke-width="2.5" />
                 <circle cx="178" cy="95" r="5" fill="#332200" />
                 <circle cx="178" cy="115" r="5" fill="#332200" />
             </svg>
-            
             <div class="hero-title-text">
                 <h1 class="super-domain">FOTV.COM</h1>
                 <div class="chinese-brand">火视网</div>
@@ -251,13 +241,13 @@
 
 <footer>
     <div class="footer-network-info">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</div>
-
     <div class="legal-notice">
         © 2026 FOTV MEDIA NETWORKS | MARS SECTOR | FOTV® (CLASS 35) <br>
         INITIALIZING GLOBAL SHORT DRAMA DISTRIBUTION PROTOCOL
     </div>
-
-    <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
+    <div class="contact-area">
+        合作联系：<a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
+    </div>
 </footer>
 
 </body>
