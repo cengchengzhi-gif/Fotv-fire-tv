@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV.COM® | MULTI-PLANETARY SPECIES PROTOCOL</title>
+    <title>FOTV.COM® | 全球短剧行星分发协议</title>
     <style>
         :root {
             --mars-red: #E60012;
-            --tech-purple-glow: rgba(192, 132, 252, 0.35); 
+            --tech-purple-glow: rgba(192, 132, 252, 0.3); 
             --white-micro-glow: rgba(255, 255, 255, 0.2);
             --tech-purple: #C084FC;
             --tech-silver: #FFFFFF;
-            --text-silver-dim: #cccccc;
+            --text-silver-dim: #dddddd;
             --deep-black: #000000;
             --legal-gray: #1a1a1a;
         }
@@ -19,7 +19,7 @@
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', 'Helvetica Neue', Arial, 'PingFang SC', sans-serif;
             background-color: var(--deep-black);
             color: white;
             overflow-x: hidden;
@@ -33,7 +33,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #150005 0%, #000000 100%);
+            background: radial-gradient(circle at center, #100005 0%, #000000 100%);
             z-index: -1;
         }
 
@@ -41,7 +41,7 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 4vh; /* 向上更极致聚合 */
+            padding-top: 4vh; /* 极致向上聚合 */
         }
 
         /* 核心品牌勋章 */
@@ -74,7 +74,7 @@
 
         /* 品牌文字块 */
         .hero-title-text {
-            margin-top: 8px; /* 电视与域名紧密咬合 */
+            margin-top: 8px; 
             position: relative;
             z-index: 3;
         }
@@ -101,43 +101,42 @@
             opacity: 0.95;
         }
 
-        /* 跨行星物种叙事区：净化色彩，冷灰+银紫微光 */
-        .mars-narrative {
-            margin-top: 50px; /* 间距收紧 */
+        /* 短剧分发叙事区：净化色彩，银白+银紫微光 */
+        .drama-narrative {
+            margin-top: 50px; 
             max-width: 850px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .glow-statement {
-            font-size: 13pt;
-            font-weight: 200;
-            color: var(--text-silver-dim); /* 彻底去红，改为银灰色 */
-            letter-spacing: 5px;
+            font-size: 14pt;
+            font-weight: 300;
+            color: var(--text-silver-dim); 
+            letter-spacing: 6px;
             line-height: 2.2;
-            text-transform: uppercase;
-            /* 真空银紫微光 */
-            text-shadow: 0 0 4px rgba(255, 255, 255, 0.1), 0 0 8px var(--tech-purple-glow);
-            opacity: 0.8;
+            /* 真空冷光微发光 */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.1), 0 0 10px var(--tech-purple-glow);
+            opacity: 0.85;
             animation: narrativePulse 6s infinite alternate;
         }
 
         @keyframes narrativePulse {
-            from { opacity: 0.7; text-shadow: 0 0 3px rgba(255, 255, 255, 0.05); }
-            to { opacity: 0.95; text-shadow: 0 0 6px rgba(255, 255, 255, 0.15), 0 0 10px rgba(192, 132, 252, 0.2); }
+            from { opacity: 0.75; text-shadow: 0 0 4px rgba(255, 255, 255, 0.05); }
+            to { opacity: 1; text-shadow: 0 0 12px rgba(192, 132, 252, 0.2); }
         }
 
         .sub-narrative {
             font-size: 9.5pt;
-            color: #666; /* 相应的更克制、更隐约的灰色 */
-            letter-spacing: 2px;
+            color: #555; /* 极其克制的灰色 */
+            letter-spacing: 3px;
             line-height: 2;
-            margin-top: 25px;
+            margin-top: 30px;
             font-weight: 200;
             text-shadow: 0 0 2px var(--white-micro-glow);
         }
 
-        /* 底部置底区域 */
+        /* 底部区域 */
         footer {
             position: absolute;
             bottom: 0;
@@ -146,14 +145,14 @@
             text-align: center;
         }
 
-        /* 下沉后的品牌网络信息 */
+        /* 品牌网络信息：下沉页脚 */
         .footer-network-info {
             font-size: 8pt;
-            color: #444; /* 深灰色，不显喧宾夺主 */
+            color: #333; 
             letter-spacing: 3px;
             font-weight: 300;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .legal-notice {
@@ -164,10 +163,10 @@
             line-height: 2;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 25px; /* 为底部的邮箱留出间距 */
+            margin-bottom: 25px;
         }
 
-        /* 亮白微光邮箱：放置于最底部 */
+        /* 亮白微光邮箱：视觉终点 */
         .contact-email {
             display: inline-block;
             font-size: 10pt;
@@ -181,7 +180,7 @@
         }
 
         @keyframes emailGlowPulse {
-            from { opacity: 0.7; text-shadow: 0 0 4px var(--white-micro-glow); }
+            from { opacity: 0.7; text-shadow: 0 0 3px var(--white-micro-glow); }
             to { opacity: 1; text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
         }
 
@@ -193,8 +192,7 @@
         @media (max-width: 768px) {
             .hero-logo-svg { height: 130px; }
             .super-domain { font-size: 20pt; }
-            .glow-statement { font-size: 10pt; padding: 0 20px; letter-spacing: 3px; }
-            .container { padding-top: 4vh; }
+            .glow-statement { font-size: 11pt; padding: 0 20px; letter-spacing: 4px; }
             footer { position: relative; margin-top: 80px; }
         }
     </style>
@@ -238,14 +236,14 @@
             </div>
         </div>
 
-        <div class="mars-narrative">
+        <div class="drama-narrative">
             <div class="glow-statement">
-                Becoming a multi-planetary species is the imperative of consciousness.<br>
-                Mars is not a destination, but a preservation of the human fire.
+                记录文明的每一刻精彩，点燃跨越行星的影像火种。<br>
+                FOTV® 致力于全球热门短剧分发，构建星际级流量协议。
             </div>
             <div class="sub-narrative">
-                从地球摇篮到红色荒漠，FOTV® 记录文明跨越星际的每一帧闪烁。<br>
-                作为跨行星物种的影像协议，我们点燃第一束来自火星的意识火种。
+                从本土爆款到全球出海，FOTV® 正在重新定义内容分发的疆界。<br>
+                作为行星级媒体矩阵的核心，我们让每一帧短剧都具备跨越维度的爆发力。
             </div>
         </div>
     </div>
@@ -256,7 +254,7 @@
 
     <div class="legal-notice">
         © 2026 FOTV MEDIA NETWORKS | MARS SECTOR | FOTV® (CLASS 35) <br>
-        INITIALIZING MULTI-PLANETARY CONTENT PROTOCOL
+        INITIALIZING GLOBAL SHORT DRAMA DISTRIBUTION PROTOCOL
     </div>
 
     <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
