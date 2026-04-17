@@ -7,8 +7,9 @@
     <style>
         :root {
             --mars-red: #E60012;
-            --mars-glow: #ff4500;
-            --white-glow: rgba(255, 255, 255, 0.8);
+            --mars-glow: rgba(255, 69, 0, 0.4); /* faint glow for statement */
+            --sub-glow: rgba(255, 255, 255, 0.2); /* very faint glow for sub-narrative */
+            --email-glow: rgba(255, 255, 255, 0.4); /* faint glow for email */
             --tech-purple: #C084FC;
             --tech-silver: #FFFFFF;
             --deep-black: #000000;
@@ -59,16 +60,16 @@
             z-index: 2;
         }
 
-        /* 火星旋转动效 */
-        .mars-sphere-core {
-            fill: url(#marsSphere);
-            transform-origin: center;
-            animation: marsRotate 15s infinite linear;
+        /* SVG 内的旋转 Mars */
+        .mars-spinner {
+            transform-origin: 120px 120px;
+            animation: spinner 20s infinite linear;
         }
 
-        @keyframes marsRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes spinner {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* 品牌文字：极速靠拢 */
@@ -100,9 +101,9 @@
             opacity: 0.9;
         }
 
-        /* 叙事区 */
+        /* 叙事区：微发光字体 */
         .mars-narrative {
-            margin-top: 70px;
+            margin-top: 80px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -111,26 +112,30 @@
         .glow-statement {
             font-size: 12pt;
             font-weight: 200;
-            color: var(--mars-glow);
+            color: var(--mars-red);
             letter-spacing: 4px;
             line-height: 2.2;
             text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+            /* 核心动效：模拟真空霓虹微光感 */
+            text-shadow: 0 0 3px rgba(255, 69, 0, 0.4);
+            opacity: 0.8;
             animation: pulseGlow 4s infinite alternate;
         }
 
         @keyframes pulseGlow {
-            from { opacity: 0.6; text-shadow: 0 0 8px rgba(255, 69, 0, 0.3); }
-            to { opacity: 0.95; text-shadow: 0 0 18px rgba(255, 69, 0, 0.7); }
+            from { opacity: 0.7; text-shadow: 0 0 2px rgba(255, 69, 0, 0.2); }
+            to { opacity: 0.95; text-shadow: 0 0 6px rgba(255, 69, 0, 0.6); }
         }
 
         .sub-narrative {
             font-size: 9pt;
-            color: #333;
+            color: #ccc;
             letter-spacing: 2px;
             line-height: 1.8;
-            margin-top: 25px;
-            font-weight: 200;
+            margin-top: 30px;
+            font-weight: 300;
+            /* 极致微发光 */
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
         }
 
         /* 底部置底 */
@@ -142,29 +147,29 @@
             text-align: center;
         }
 
-        /* 亮白发光邮件 */
+        /* 微发光、高清晰度亮白邮件 */
         .contact-email {
             display: block;
             font-size: 10pt;
-            color: #ffffff;
+            color: white;
             text-decoration: none;
             letter-spacing: 2px;
             margin-bottom: 20px;
-            font-weight: 300;
-            /* 亮白霓虹效果 */
-            text-shadow: 0 0 8px var(--white-glow), 0 0 20px rgba(255, 255, 255, 0.3);
+            font-weight: 200;
+            /* 微发光霓虹脉冲动效 */
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
             animation: whitePulse 3s infinite alternate;
             transition: 0.3s;
         }
 
         .contact-email:hover {
-            color: #ffffff;
-            text-shadow: 0 0 15px #fff, 0 0 30px var(--tech-purple);
+            color: var(--tech-purple);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px var(--tech-purple);
         }
 
         @keyframes whitePulse {
-            from { opacity: 0.7; text-shadow: 0 0 5px var(--white-glow); }
-            to { opacity: 1; text-shadow: 0 0 15px #fff, 0 0 25px rgba(255, 255, 255, 0.5); }
+            from { opacity: 0.7; text-shadow: 0 0 1px rgba(255, 255, 255, 0.3); }
+            to { opacity: 0.9; text-shadow: 0 0 4px rgba(255, 255, 255, 0.5); }
         }
 
         .legal-notice {
@@ -180,6 +185,7 @@
         @media (max-width: 768px) {
             .hero-logo-svg { height: 130px; }
             .super-domain { font-size: 20pt; }
+            .glow-statement { font-size: 10pt; padding: 0 20px; }
             .container { padding-top: 5vh; }
         }
     </style>
@@ -208,8 +214,8 @@
                 
                 <rect x="62" y="82" width="116" height="76" rx="8" fill="#000" />
                 
-                <g transform="translate(120, 120)">
-                    <circle class="mars-sphere-core" cx="0" cy="0" r="30" />
+                <g class="mars-spinner">
+                    <circle cx="120" cy="120" r="30" fill="url(#marsSphere)" />
                 </g>
                 
                 <polygon points="128,120 115,110 115,130" fill="white" opacity="0.9" />
