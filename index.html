@@ -39,10 +39,10 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 6vh; /* 进一步向上提振 */
+            padding-top: 6vh; /* 极致向上靠拢 */
         }
 
-        /* 核心品牌勋章区 */
+        /* 核心品牌区 */
         .brand-hub {
             display: flex;
             flex-direction: column;
@@ -50,17 +50,17 @@
             position: relative;
         }
 
-        /* 金色电视标识 */
+        /* 电视标识 */
         .hero-logo-svg {
-            height: 160px; /* 尺寸微调以增加聚合感 */
+            height: 170px; 
             width: auto;
             filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
             z-index: 2;
         }
 
-        /* 域名与中文：极速靠拢 */
+        /* 品牌文字：极速靠拢 */
         .hero-title-text {
-            margin-top: 5px; /* 几乎与电视咬合 */
+            margin-top: 5px; 
             position: relative;
             z-index: 3;
         }
@@ -87,7 +87,7 @@
             opacity: 0.9;
         }
 
-        /* 马斯克火星叙事区：发光字体 */
+        /* 火星叙事区：发光字体 */
         .mars-narrative {
             margin-top: 80px;
             max-width: 800px;
@@ -102,27 +102,25 @@
             letter-spacing: 4px;
             line-height: 2.2;
             text-transform: uppercase;
-            margin-bottom: 20px;
-            /* 核心动效：模拟真空霓虹光感 */
-            text-shadow: 0 0 10px rgba(255, 69, 0, 0.6), 0 0 20px rgba(255, 69, 0, 0.3);
-            opacity: 0.8;
+            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
             animation: pulseGlow 4s infinite alternate;
         }
 
         @keyframes pulseGlow {
-            from { opacity: 0.6; text-shadow: 0 0 10px rgba(255, 69, 0, 0.4); }
-            to { opacity: 0.9; text-shadow: 0 0 20px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.4); }
+            from { opacity: 0.6; text-shadow: 0 0 8px rgba(255, 69, 0, 0.3); }
+            to { opacity: 0.95; text-shadow: 0 0 18px rgba(255, 69, 0, 0.7); }
         }
 
         .sub-narrative {
             font-size: 9pt;
-            color: #444;
+            color: #333;
             letter-spacing: 2px;
             line-height: 1.8;
             margin-top: 30px;
+            font-weight: 200;
         }
 
-        /* 底部置底 */
+        /* 底部区域 */
         footer {
             position: absolute;
             bottom: 0;
@@ -131,13 +129,28 @@
             text-align: center;
         }
 
+        /* 发光邮箱：霓虹脉冲动效 */
         .contact-email {
             display: block;
-            font-size: 8pt;
-            color: #1a1a1a; 
+            font-size: 10pt;
+            color: var(--mars-glow);
             text-decoration: none;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 200;
+            text-shadow: 0 0 5px rgba(255, 69, 0, 0.4);
+            animation: emailGlow 3s infinite alternate;
+            transition: 0.3s;
+        }
+
+        .contact-email:hover {
+            color: white;
+            text-shadow: 0 0 15px var(--mars-glow);
+        }
+
+        @keyframes emailGlow {
+            from { opacity: 0.6; text-shadow: 0 0 5px rgba(255, 69, 0, 0.3); }
+            to { opacity: 1; text-shadow: 0 0 12px rgba(255, 69, 0, 0.8); }
         }
 
         .legal-notice {
@@ -151,7 +164,9 @@
         }
 
         @media (max-width: 768px) {
-            .glow-statement { font-size: 10pt; letter-spacing: 2px; padding: 0 20px; }
+            .hero-logo-svg { height: 130px; }
+            .super-domain { font-size: 20pt; }
+            .glow-statement { font-size: 10pt; padding: 0 20px; }
             .container { padding-top: 5vh; }
         }
     </style>
@@ -169,12 +184,24 @@
                         <stop offset="0%" style="stop-color:#FFD700" />
                         <stop offset="100%" style="stop-color:#B8860B" />
                     </linearGradient>
+                    <radialGradient id="marsSphere" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+                        <stop offset="0%" style="stop-color:#FF8C00" />
+                        <stop offset="60%" style="stop-color:#E60012" />
+                        <stop offset="100%" style="stop-color:#330000" />
+                    </radialGradient>
                 </defs>
+
                 <rect x="50" y="70" width="140" height="100" rx="15" fill="url(#goldCase)" />
-                <rect x="62" y="82" width="105" height="76" rx="8" fill="#000" />
-                <polygon points="125,120 105,105 105,135" fill="url(#goldCase)" />
+                
+                <rect x="62" y="82" width="116" height="76" rx="8" fill="#000" />
+                
+                <circle cx="120" cy="120" r="30" fill="url(#marsSphere)" />
+                
+                <polygon points="128,120 115,110 115,130" fill="white" opacity="0.9" />
+                
                 <line x1="120" y1="70" x2="85" y2="25" stroke="#FFD700" stroke-width="2.5" />
                 <line x1="120" y1="70" x2="155" y2="25" stroke="#FFD700" stroke-width="2.5" />
+                
                 <circle cx="178" cy="95" r="5" fill="#332200" />
                 <circle cx="178" cy="115" r="5" fill="#332200" />
             </svg>
@@ -200,6 +227,7 @@
 
 <footer>
     <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
+    
     <div class="legal-notice">
         © 2026 FOTV MEDIA NETWORKS | MARS SECTOR | FOTV® (CLASS 35) <br>
         INITIALIZING MULTI-PLANETARY CONTENT PROTOCOL
