@@ -23,7 +23,7 @@
             height: 100%;
         }
 
-        /* 宇宙深空背景 */
+        /* 宇宙深空背景，极致简约 */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -38,7 +38,11 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 15vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 垂直居中 */
         }
 
         /* 核心品牌展示区 */
@@ -46,62 +50,51 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 60px;
             position: relative;
         }
 
-        /* 标识：燃烧的金色电视（无背景火，无底座） */
+        /* 标识：冷静的金色电视（彻底去火、去冗余背景） */
         .hero-logo-svg {
-            height: 220px; 
+            height: 180px; /* 稍微缩小电视体积以配合微缩域名 */
             width: auto;
-            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.2));
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.15)); /* 极弱的发光 */
             z-index: 2;
         }
 
-        /* 火焰真实燃烧滤镜 */
-        .fire-top {
-            fill: var(--mars-red);
-            filter: url(#realFire);
-            animation: flicker 0.12s infinite alternate;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 0.8; transform: translateY(0) scaleY(1); }
-            100% { opacity: 1; transform: translateY(-2px) scaleY(1.05); }
-        }
-
-        /* 品牌文字：移植 cai.com 渐变风格 + 大写域名 */
+        /* 品牌文字：极简布局 */
         .hero-title-text {
-            margin-top: 30px; 
+            margin-top: 25px; /* 间距毫米级调整 */
             position: relative;
             z-index: 3;
         }
 
+        /* 域名：微缩、大写、银紫渐变 */
         .super-domain {
-            font-size: 50pt; 
+            font-size: 24pt; /* 域名大幅缩小 */
             font-weight: 900;
-            letter-spacing: -1px;
+            letter-spacing: 0px; /* 缩小后不再需要负间距 */
             margin: 0;
             
-            /* 渐变色：银色到紫色的高维度转换 */
+            /* 渐变色：保留银色到紫色的科技感 */
             background: linear-gradient(180deg, var(--tech-silver) 30%, var(--tech-purple) 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             
             text-transform: uppercase; /* 强制大写 */
-            line-height: 1.1;
-            filter: drop-shadow(0 0 10px rgba(192, 132, 252, 0.3));
+            line-height: 1.2;
+            filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.25));
         }
 
+        /* 中文品牌名：保持主权红 */
         .chinese-brand {
-            font-size: 24pt;
+            font-size: 18pt; /* 相应缩小，保持比例 */
             font-weight: bold;
             color: var(--mars-red);
-            letter-spacing: 16px;
-            margin-top: 12px;
-            text-indent: 16px;
-            opacity: 0.95;
-            filter: drop-shadow(0 0 8px rgba(230, 0, 18, 0.4));
+            letter-spacing: 12px;
+            margin-top: 10px;
+            text-indent: 12px;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 6px rgba(230, 0, 18, 0.3));
         }
 
         /* 底部信息 */
@@ -113,6 +106,7 @@
             text-align: center;
         }
 
+        /* 邮箱：极简、深灰 */
         .contact-email {
             display: block;
             font-size: 8pt;
@@ -128,20 +122,20 @@
         }
 
         .legal-notice {
-            font-size: 7.5pt;
+            font-size: 7pt;
             color: var(--legal-gray);
             max-width: 900px;
             margin: 0 auto;
-            line-height: 2.2;
+            line-height: 2;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
+        /* 响应式适配 */
         @media (max-width: 768px) {
-            .hero-logo-svg { height: 160px; }
-            .super-domain { font-size: 32pt; }
-            .chinese-brand { font-size: 18pt; }
-            .container { padding-top: 10vh; }
+            .hero-logo-svg { height: 140px; }
+            .super-domain { font-size: 18pt; }
+            .chinese-brand { font-size: 14pt; }
         }
     </style>
 </head>
@@ -158,18 +152,10 @@
                         <stop offset="0%" style="stop-color:#FFD700" />
                         <stop offset="100%" style="stop-color:#B8860B" />
                     </linearGradient>
-                    
-                    <filter id="realFire">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" seed="1">
-                            <animate attributeName="seed" from="1" to="100" dur="2s" repeatCount="indefinite" />
-                        </feTurbulence>
-                        <feDisplacementMap in="SourceGraphic" scale="12" />
-                    </filter>
                 </defs>
 
-                <path class="fire-top" d="M80 60 Q120 -15 160 60 L150 75 L90 75 Z" />
-                
                 <rect x="50" y="70" width="140" height="100" rx="15" fill="url(#goldCase)" />
+                
                 <rect x="62" y="82" width="105" height="76" rx="8" fill="#000" />
                 
                 <polygon points="125,120 105,105 105,135" fill="url(#goldCase)" />
