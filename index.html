@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV.COM® | MARS NARRATIVE INITIALIZED</title>
+    <title>FOTV.COM® | MULTI-PLANETARY SPECIES NARRATIVE</title>
     <style>
         :root {
             --mars-red: #E60012;
-            --mars-glow: rgba(255, 69, 0, 0.4); /* faint glow for statement */
-            --sub-glow: rgba(255, 255, 255, 0.2); /* very faint glow for sub-narrative */
-            --email-glow: rgba(255, 255, 255, 0.4); /* faint glow for email */
+            --mars-glow: rgba(255, 69, 0, 0.35); 
+            --white-micro-glow: rgba(255, 255, 255, 0.25);
             --tech-purple: #C084FC;
             --tech-silver: #FFFFFF;
             --deep-black: #000000;
@@ -41,10 +40,10 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 6vh; 
+            padding-top: 6vh; /* 极致向上聚合 */
         }
 
-        /* 核心品牌区 */
+        /* 核心品牌勋章 */
         .brand-hub {
             display: flex;
             flex-direction: column;
@@ -52,29 +51,29 @@
             position: relative;
         }
 
-        /* 电视标识 */
+        /* 金色电视标识 */
         .hero-logo-svg {
-            height: 170px; 
+            height: 160px; 
             width: auto;
             filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
             z-index: 2;
         }
 
-        /* SVG 内的旋转 Mars */
-        .mars-spinner {
+        /* 火星自转动效 */
+        .mars-rotating-core {
+            fill: url(#marsSphere);
             transform-origin: 120px 120px;
-            animation: spinner 20s infinite linear;
+            animation: marsSelfRotate 20s infinite linear;
         }
 
-        @keyframes spinner {
-            to {
-                transform: rotate(360deg);
-            }
+        @keyframes marsSelfRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        /* 品牌文字：极速靠拢 */
+        /* 品牌文字块 */
         .hero-title-text {
-            margin-top: 5px; 
+            margin-top: 8px; 
             position: relative;
             z-index: 3;
         }
@@ -101,44 +100,52 @@
             opacity: 0.9;
         }
 
-        /* 叙事区：微发光字体 */
+        /* 品牌网络信息 */
+        .network-info {
+            margin-top: 15px;
+            font-size: 9pt;
+            color: #444;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        /* 跨行星物种叙事区：微发光 */
         .mars-narrative {
-            margin-top: 80px;
-            max-width: 800px;
+            margin-top: 70px;
+            max-width: 850px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .glow-statement {
-            font-size: 12pt;
+            font-size: 13pt;
             font-weight: 200;
             color: var(--mars-red);
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             line-height: 2.2;
             text-transform: uppercase;
-            /* 核心动效：模拟真空霓虹微光感 */
-            text-shadow: 0 0 3px rgba(255, 69, 0, 0.4);
-            opacity: 0.8;
-            animation: pulseGlow 4s infinite alternate;
+            /* 真空微发光 */
+            text-shadow: 0 0 5px var(--mars-glow);
+            opacity: 0.85;
+            animation: narrativeFlicker 5s infinite alternate;
         }
 
-        @keyframes pulseGlow {
-            from { opacity: 0.7; text-shadow: 0 0 2px rgba(255, 69, 0, 0.2); }
-            to { opacity: 0.95; text-shadow: 0 0 6px rgba(255, 69, 0, 0.6); }
+        @keyframes narrativeFlicker {
+            from { opacity: 0.7; text-shadow: 0 0 3px var(--mars-glow); }
+            to { opacity: 0.95; text-shadow: 0 0 8px rgba(255, 69, 0, 0.6); }
         }
 
         .sub-narrative {
-            font-size: 9pt;
-            color: #ccc;
+            font-size: 9.5pt;
+            color: #333;
             letter-spacing: 2px;
-            line-height: 1.8;
+            line-height: 2;
             margin-top: 30px;
-            font-weight: 300;
-            /* 极致微发光 */
-            text-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
+            font-weight: 200;
+            text-shadow: 0 0 2px var(--white-micro-glow);
         }
 
-        /* 底部置底 */
+        /* 底部置底区域 */
         footer {
             position: absolute;
             bottom: 0;
@@ -147,29 +154,28 @@
             text-align: center;
         }
 
-        /* 微发光、高清晰度亮白邮件 */
+        /* 亮白微光邮箱 */
         .contact-email {
             display: block;
             font-size: 10pt;
-            color: white;
+            color: #ffffff;
             text-decoration: none;
             letter-spacing: 2px;
             margin-bottom: 20px;
-            font-weight: 200;
-            /* 微发光霓虹脉冲动效 */
-            text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
-            animation: whitePulse 3s infinite alternate;
+            font-weight: 300;
+            text-shadow: 0 0 5px var(--white-micro-glow);
             transition: 0.3s;
+            animation: emailPulse 4s infinite alternate;
+        }
+
+        @keyframes emailPulse {
+            from { opacity: 0.7; text-shadow: 0 0 3px var(--white-micro-glow); }
+            to { opacity: 1; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
         }
 
         .contact-email:hover {
-            color: var(--tech-purple);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px var(--tech-purple);
-        }
-
-        @keyframes whitePulse {
-            from { opacity: 0.7; text-shadow: 0 0 1px rgba(255, 255, 255, 0.3); }
-            to { opacity: 0.9; text-shadow: 0 0 4px rgba(255, 255, 255, 0.5); }
+            color: #fff;
+            text-shadow: 0 0 15px var(--tech-purple);
         }
 
         .legal-notice {
@@ -211,18 +217,14 @@
                 </defs>
 
                 <rect x="50" y="70" width="140" height="100" rx="15" fill="url(#goldCase)" />
-                
                 <rect x="62" y="82" width="116" height="76" rx="8" fill="#000" />
                 
-                <g class="mars-spinner">
-                    <circle cx="120" cy="120" r="30" fill="url(#marsSphere)" />
-                </g>
+                <circle class="mars-rotating-core" cx="120" cy="120" r="30" />
                 
                 <polygon points="128,120 115,110 115,130" fill="white" opacity="0.9" />
                 
                 <line x1="120" y1="70" x2="85" y2="25" stroke="#FFD700" stroke-width="2.5" />
                 <line x1="120" y1="70" x2="155" y2="25" stroke="#FFD700" stroke-width="2.5" />
-                
                 <circle cx="178" cy="95" r="5" fill="#332200" />
                 <circle cx="178" cy="115" r="5" fill="#332200" />
             </svg>
@@ -230,17 +232,18 @@
             <div class="hero-title-text">
                 <h1 class="super-domain">FOTV.COM</h1>
                 <div class="chinese-brand">火视网</div>
+                <div class="network-info">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</div>
             </div>
         </div>
 
         <div class="mars-narrative">
             <div class="glow-statement">
-                Life must be multi-planetary.<br>
-                Mars is the archive of our future consciousness.
+                Becoming a multi-planetary species is the imperative of consciousness.<br>
+                Mars is not a destination, but a preservation of the human fire.
             </div>
             <div class="sub-narrative">
-                文明的延续不应止于摇篮。FOTV 正在构建跨越行星的内容协议，<br>
-                在红色荒漠被点燃之前，我们先点燃影像的火种。
+                从地球摇篮到红色荒漠，FOTV 记录文明跨越星际的每一帧闪烁。<br>
+                作为跨行星物种的影像协议，我们点燃第一束来自火星的意识火种。
             </div>
         </div>
     </div>
