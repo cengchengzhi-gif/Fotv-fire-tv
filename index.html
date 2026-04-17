@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV® 火视网 - 全球热门短剧平台 INITIALIZED</title>
+    <title>FOTV® 火视网 - INITIALIZED</title>
     <style>
         :root {
             --primary-red: #E60012;
-            --fire-orange: #FF4D00;
+            --gold-shine: #FFD700;
             --deep-black: #000000;
-            --legal-gray: #1a1a1a; /* 法律声明字体颜色更深，实现隐约可见 */
-            --text-gray: #444;
         }
 
         body, html {
@@ -19,154 +17,136 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', sans-serif;
             background-color: var(--deep-black);
             color: white;
-            overflow-x: hidden;
+            overflow: hidden;
             height: 100%;
         }
 
-        /* 呼吸感深红背景，极致简约 */
+        /* 宇宙深处背景 */
         .bg-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, #050000 0%, #000000 100%);
+            background: radial-gradient(circle at center, #1a0000 0%, #000000 100%);
             z-index: -1;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 15vh;
-        }
-
-        /* 核心品牌徽章容器 */
-        .brand-hub {
-            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 60px;
-        }
-
-        /* 静态高维 3D 标识，裁剪为金环徽章形态 */
-        .hero-logo-img {
-            width: 500px; /* 大标识 */
-            height: auto;
-            filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.4)); /* 柔和的发光 */
-            z-index: 2;
-            
-            /* 关键修改：象火在燃烧 */
-            animation: fireFlicker 0.1s infinite alternate;
-        }
-
-        /* 动态火光光晕（Burning Aura） - 放在标识后方 */
-        .logo-aura {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: 
-                radial-gradient(circle, rgba(255, 60, 0, 0.4) 0%, rgba(255, 60, 0, 0) 50%),
-                radial-gradient(circle, rgba(230, 0, 18, 0.2) 0%, rgba(230, 0, 18, 0) 60%);
-            z-index: 1;
-            
-            /* 象在燃烧的复杂动画 */
-            animation: 
-                burningAuraMovement 3s infinite ease-in-out,
-                fireColorShift 5s infinite alternate;
-        }
-
-        /* 火光光晕翻滚动画 */
-        @keyframes burningAuraMovement {
-            0% { transform: translate(-50%, -50%) scale(1) skewX(0deg); opacity: 0.8; }
-            50% { transform: translate(-45%, -55%) scale(1.1) skewX(2deg); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(1) skewX(0deg); opacity: 0.8; }
-        }
-
-        /* 火光颜色微调动效 */
-        @keyframes fireColorShift {
-            from { background-position: 0% center; }
-            to { background-position: 100% center; }
-        }
-
-        @keyframes fireFlicker {
-            from { filter: blur(0px); opacity: 0.95; }
-            to { filter: blur(0.5px); opacity: 1; }
-        }
-
-        /* 文字内容：始终保持域名轴心居中，小点靠拢 */
-        .hero-title-text {
+            justify-content: center;
+            height: 100vh;
             text-align: center;
-            width: 100%;
-            /* 关键调整：文字已包含在图片中，此区域用于布局 */
-            margin-top: -100px; 
+        }
+
+        /* 品牌核心区 */
+        .brand-hub {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             position: relative;
+            margin-bottom: 80px;
+        }
+
+        /* 电视机标识动画：轻微呼吸感 */
+        .logo-wrapper {
+            animation: tvFloat 3s infinite ease-in-out;
+            z-index: 2;
+        }
+
+        @keyframes tvFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-logo-svg {
+            height: 280px; /* 加大标识 */
+            width: auto;
+            filter: drop-shadow(0 0 50px rgba(230, 0, 18, 0.6));
+        }
+
+        /* 火焰燃烧动画：三层叠加 */
+        .fire-inner {
+            fill: var(--gold-shine);
+            animation: flicker 0.1s infinite alternate;
+        }
+
+        .fire-mid {
+            fill: #FF6600;
+            animation: fireRise 2s infinite linear;
+            transform-origin: center bottom;
+        }
+
+        .fire-outer {
+            fill: var(--primary-red);
+            animation: fireRise 1.5s infinite linear;
+            transform-origin: center bottom;
+            opacity: 0.8;
+        }
+
+        @keyframes fireRise {
+            0% { transform: scaleY(1) translateY(0); opacity: 0.8; }
+            50% { transform: scaleY(1.2) translateY(-5px); opacity: 1; }
+            100% { transform: scaleY(1) translateY(0); opacity: 0.8; }
+        }
+
+        @keyframes flicker {
+            from { opacity: 0.8; filter: blur(1px); }
+            to { opacity: 1; filter: blur(2px); }
+        }
+
+        /* 域名与中文：靠拢且协调 */
+        .title-group {
+            margin-top: -60px; /* 极致靠拢电视机 */
             z-index: 3;
         }
 
-        /* 核心域名大写，文字已包含在图片中 */
         .super-domain {
-            font-size: 38pt; 
+            font-size: 42pt; 
             font-weight: 900;
             letter-spacing: 2px;
             margin: 0;
             color: #ffffff;
             text-transform: uppercase;
-            opacity: 0.95;
-            line-height: 1;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.8);
         }
 
-        /* 域名下的中文名，文字已包含在图片中 */
         .chinese-brand {
-            font-size: 20pt;
+            font-size: 22pt;
             font-weight: bold;
             color: var(--primary-red);
             letter-spacing: 12px;
-            margin-top: 8px;
+            margin-top: 5px;
             text-indent: 12px;
             opacity: 0.9;
         }
 
-        /* 热门短剧宣传文字（金色发光） */
+        /* 宣传语 */
         .promo-text {
-            margin-top: 60px;
+            margin-top: 40px;
             font-size: 15pt;
             font-weight: 200;
-            color: #ddd;
+            color: #555;
             letter-spacing: 5px;
-            background: linear-gradient(90deg, #333, #fff, #333);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 5s linear infinite;
         }
 
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        /* 底部置底区域 */
+        /* 底部置底区 */
         footer {
             position: absolute;
-            bottom: 0;
+            bottom: 40px;
             width: 100%;
-            padding: 60px 0;
-            background: linear-gradient(to top, #000 0%, transparent 100%);
             text-align: center;
         }
 
-        /* 联系邮件：小写，放在最下面，小字体，深灰色 */
         .contact-email {
             display: block;
-            font-size: 8pt; /* 小字体 */
-            color: #222; /* 深灰色，隐约可见 */
+            font-size: 9pt; /* 小字体 */
+            color: #333; /* 隐约可见 */
             text-decoration: none;
             letter-spacing: 1px;
-            margin-top: 20px;
+            margin-bottom: 15px;
             transition: 0.3s;
         }
 
@@ -176,21 +156,16 @@
 
         .legal-notice {
             font-size: 8pt;
-            color: var(--legal-gray);
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 2;
+            color: #222;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         @media (max-width: 768px) {
-            .hero-logo-img { width: 300px; }
-            .hero-title-text { margin-top: -60px; }
+            .hero-logo-svg { height: 180px; }
             .super-domain { font-size: 26pt; }
             .chinese-brand { font-size: 16pt; }
-            .promo-text { font-size: 12pt; }
-            footer { position: relative; margin-top: 100px; }
+            .title-group { margin-top: -40px; }
         }
     </style>
 </head>
@@ -199,14 +174,26 @@
 <div class="bg-overlay"></div>
 
 <div class="container">
-    <div class="hero-section">
-        <div class="brand-hub">
-            <div class="logo-aura"></div>
-            
-            <img class="hero-logo-img" src="fotv_gold_emblem.png" alt="FOTV 火视网徽章">
-            
-            <div class="hero-title-text">
-                </div>
+    <div class="brand-hub">
+        <div class="logo-wrapper">
+            <svg class="hero-logo-svg" viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg">
+                <path class="fire-outer" d="M60 60 Q120 -20 180 60 T220 100 L120 140 L20 100 Z" />
+                <path class="fire-mid" d="M80 70 Q120 10 160 70 T190 100 L120 130 L50 100 Z" />
+                
+                <rect x="55" y="60" width="130" height="90" rx="15" fill="#B8860B" stroke="#FFD700" stroke-width="3" />
+                <rect x="65" y="70" width="95" height="70" rx="8" fill="#1a0000" stroke="#E60012" stroke-width="2" />
+                <line x1="120" y1="60" x2="80" y2="20" stroke="#FFD700" stroke-width="3" stroke-linecap="round" />
+                <line x1="120" y1="60" x2="160" y2="20" stroke="#FFD700" stroke-width="3" stroke-linecap="round" />
+                <circle fill="#FFD700" cx="172" cy="85" r="5" />
+                <circle fill="#FFD700" cx="172" cy="105" r="5" />
+                
+                <polygon points="125,105 105,90 105,120" fill="white" class="fire-inner" />
+            </svg>
+        </div>
+
+        <div class="title-group">
+            <h1 class="super-domain">FOTV.com</h1>
+            <div class="chinese-brand">火视网</div>
         </div>
 
         <div class="promo-text">热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED</div>
@@ -214,13 +201,10 @@
 </div>
 
 <footer>
-    <div class="legal-notice">
-        © 2026 FOTV MEDIA NETWORKS. ALL RIGHTS RESERVED. <br>
-        GLOBAL ASSET: FOTV.COM | REGISTERED TRADEMARK: FOTV® (CLASS 35) <br>
-        PROTECTED IN BEIJING / LONDON / SILICON VALLEY
-    </div>
-    
     <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
+    <div class="legal-notice">
+        © 2026 FOTV MEDIA NETWORKS | FOTV.COM | FOTV® (CLASS 35)
+    </div>
 </footer>
 
 </body>
