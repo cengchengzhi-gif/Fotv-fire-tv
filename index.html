@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV.COM® | MULTI-PLANETARY SPECIES NARRATIVE</title>
+    <title>FOTV.COM® | MULTI-PLANETARY SPECIES PROTOCOL</title>
     <style>
         :root {
             --mars-red: #E60012;
-            --mars-glow: rgba(255, 69, 0, 0.3); 
+            --tech-purple-glow: rgba(192, 132, 252, 0.35); 
             --white-micro-glow: rgba(255, 255, 255, 0.2);
             --tech-purple: #C084FC;
             --tech-silver: #FFFFFF;
+            --text-silver-dim: #cccccc;
             --deep-black: #000000;
             --legal-gray: #1a1a1a;
         }
@@ -40,10 +41,10 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding-top: 6vh; /* 极致向上聚合 */
+            padding-top: 4vh; /* 向上更极致聚合 */
         }
 
-        /* 核心品牌区 */
+        /* 核心品牌勋章 */
         .brand-hub {
             display: flex;
             flex-direction: column;
@@ -73,7 +74,7 @@
 
         /* 品牌文字块 */
         .hero-title-text {
-            margin-top: 8px; 
+            margin-top: 8px; /* 电视与域名紧密咬合 */
             position: relative;
             z-index: 3;
         }
@@ -87,7 +88,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase; 
-            line-height: 1;
+            line-height: 1.1;
         }
 
         .chinese-brand {
@@ -97,20 +98,12 @@
             letter-spacing: 14px;
             margin-top: 5px;
             text-indent: 14px;
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
-        .network-info {
-            margin-top: 15px;
-            font-size: 9pt;
-            color: #444;
-            letter-spacing: 3px;
-            font-weight: 300;
-        }
-
-        /* 跨行星物种叙事区：微发光 */
+        /* 跨行星物种叙事区：净化色彩，冷灰+银紫微光 */
         .mars-narrative {
-            margin-top: 70px;
+            margin-top: 50px; /* 间距收紧 */
             max-width: 850px;
             margin-left: auto;
             margin-right: auto;
@@ -119,29 +112,28 @@
         .glow-statement {
             font-size: 13pt;
             font-weight: 200;
-            color: var(--mars-red);
+            color: var(--text-silver-dim); /* 彻底去红，改为银灰色 */
             letter-spacing: 5px;
             line-height: 2.2;
             text-transform: uppercase;
-            /* 真空霓虹微光 */
-            text-shadow: 0 0 4px var(--mars-glow);
+            /* 真空银紫微光 */
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.1), 0 0 8px var(--tech-purple-glow);
             opacity: 0.8;
-            animation: narrativePulse 5s infinite alternate;
+            animation: narrativePulse 6s infinite alternate;
         }
 
         @keyframes narrativePulse {
-            from { opacity: 0.75; text-shadow: 0 0 3px var(--mars-glow); }
-            to { opacity: 0.95; text-shadow: 0 0 8px rgba(255, 69, 0, 0.5); }
+            from { opacity: 0.7; text-shadow: 0 0 3px rgba(255, 255, 255, 0.05); }
+            to { opacity: 0.95; text-shadow: 0 0 6px rgba(255, 255, 255, 0.15), 0 0 10px rgba(192, 132, 252, 0.2); }
         }
 
         .sub-narrative {
             font-size: 9.5pt;
-            color: #333;
+            color: #666; /* 相应的更克制、更隐约的灰色 */
             letter-spacing: 2px;
             line-height: 2;
-            margin-top: 30px;
+            margin-top: 25px;
             font-weight: 200;
-            /* 极致微发光 */
             text-shadow: 0 0 2px var(--white-micro-glow);
         }
 
@@ -152,6 +144,16 @@
             width: 100%;
             padding: 40px 0;
             text-align: center;
+        }
+
+        /* 下沉后的品牌网络信息 */
+        .footer-network-info {
+            font-size: 8pt;
+            color: #444; /* 深灰色，不显喧宾夺主 */
+            letter-spacing: 3px;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
         .legal-notice {
@@ -191,9 +193,9 @@
         @media (max-width: 768px) {
             .hero-logo-svg { height: 130px; }
             .super-domain { font-size: 20pt; }
-            .glow-statement { font-size: 10pt; padding: 0 20px; }
-            .container { padding-top: 5vh; }
-            footer { position: relative; margin-top: 100px; }
+            .glow-statement { font-size: 10pt; padding: 0 20px; letter-spacing: 3px; }
+            .container { padding-top: 4vh; }
+            footer { position: relative; margin-top: 80px; }
         }
     </style>
 </head>
@@ -233,7 +235,6 @@
             <div class="hero-title-text">
                 <h1 class="super-domain">FOTV.COM</h1>
                 <div class="chinese-brand">火视网</div>
-                <div class="network-info">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</div>
             </div>
         </div>
 
@@ -251,6 +252,8 @@
 </div>
 
 <footer>
+    <div class="footer-network-info">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</div>
+
     <div class="legal-notice">
         © 2026 FOTV MEDIA NETWORKS | MARS SECTOR | FOTV® (CLASS 35) <br>
         INITIALIZING MULTI-PLANETARY CONTENT PROTOCOL
