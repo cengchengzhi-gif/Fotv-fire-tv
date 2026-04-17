@@ -23,7 +23,7 @@
             height: 100%;
         }
 
-        /* 宇宙深空背景，极致简约 */
+        /* 宇宙深空背景 */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -38,11 +38,7 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh; /* 垂直居中 */
+            padding-top: 8vh; /* 整体向上大幅提振 */
         }
 
         /* 核心品牌展示区 */
@@ -53,48 +49,47 @@
             position: relative;
         }
 
-        /* 标识：冷静的金色电视（彻底去火、去冗余背景） */
+        /* 标识：金色电视（冷静版，无火） */
         .hero-logo-svg {
-            height: 180px; /* 稍微缩小电视体积以配合微缩域名 */
+            height: 180px; 
             width: auto;
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.15)); /* 极弱的发光 */
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.15));
             z-index: 2;
         }
 
-        /* 品牌文字：极简布局 */
+        /* 品牌文字：极致靠拢布局 */
         .hero-title-text {
-            margin-top: 25px; /* 间距毫米级调整 */
+            margin-top: 10px; /* 电视与域名紧密靠拢 */
             position: relative;
             z-index: 3;
         }
 
-        /* 域名：微缩、大写、银紫渐变 */
+        /* 域名：微缩大写，银紫渐变 */
         .super-domain {
-            font-size: 24pt; /* 域名大幅缩小 */
+            font-size: 24pt; 
             font-weight: 900;
-            letter-spacing: 0px; /* 缩小后不再需要负间距 */
+            letter-spacing: 0.5px;
             margin: 0;
             
-            /* 渐变色：保留银色到紫色的科技感 */
+            /* 渐变色：保留 cai.com 风格 */
             background: linear-gradient(180deg, var(--tech-silver) 30%, var(--tech-purple) 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             
-            text-transform: uppercase; /* 强制大写 */
-            line-height: 1.2;
-            filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.25));
+            text-transform: uppercase; 
+            line-height: 1;
+            filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.2));
         }
 
-        /* 中文品牌名：保持主权红 */
+        /* 中文名：向上贴合 */
         .chinese-brand {
-            font-size: 18pt; /* 相应缩小，保持比例 */
+            font-size: 18pt; 
             font-weight: bold;
             color: var(--mars-red);
             letter-spacing: 12px;
-            margin-top: 10px;
+            margin-top: 5px; /* 域名与中文名紧密靠拢 */
             text-indent: 12px;
-            opacity: 0.9;
-            filter: drop-shadow(0 0 6px rgba(230, 0, 18, 0.3));
+            opacity: 0.95;
         }
 
         /* 底部信息 */
@@ -106,7 +101,6 @@
             text-align: center;
         }
 
-        /* 邮箱：极简、深灰 */
         .contact-email {
             display: block;
             font-size: 8pt;
@@ -131,11 +125,11 @@
             text-transform: uppercase;
         }
 
-        /* 响应式适配 */
         @media (max-width: 768px) {
             .hero-logo-svg { height: 140px; }
             .super-domain { font-size: 18pt; }
             .chinese-brand { font-size: 14pt; }
+            .container { padding-top: 6vh; }
         }
     </style>
 </head>
@@ -173,7 +167,7 @@
             </div>
         </div>
 
-        <div style="margin-top: 50px; font-size: 14pt; color: #222; letter-spacing: 5px;">
+        <div style="margin-top: 40px; font-size: 13pt; color: #222; letter-spacing: 5px; font-weight: 200;">
             热门短剧赛道 · 全球流量分发 · 2026 INITIALIZED
         </div>
     </div>
@@ -181,7 +175,6 @@
 
 <footer>
     <a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
-    
     <div class="legal-notice">
         © 2026 FOTV MEDIA NETWORKS | FOTV.COM | FOTV® (CLASS 35) <br>
         PROTECTED IN BEIJING / LONDON / SILICON VALLEY
