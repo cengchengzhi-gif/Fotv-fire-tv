@@ -1,739 +1,241 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>FOTV.COM | 火视网</title>
-
-    <style>
-        :root {
-            --core-red: #ff3b30;
-            --deep-red: #e60012;
-            --light-red: rgba(255, 59, 48, 0.18);
-            --lighter-red: rgba(255, 59, 48, 0.10);
-            --text-black: #111111;
-            --text-grey: #8e8e93;
-            --bg-white: #ffffff;
-            --soft-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html, body {
-            width: 100%;
-            min-height: 100%;
-            background: var(--bg-white);
-            color: var(--text-black);
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-        }
-
-        body {
-            overflow-x: hidden;
-        }
-
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 28px 34px;
-            z-index: 100;
-            pointer-events: none;
-        }
-
-        .brand {
-            display: inline-block;
-            font-size: 1rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #000;
-            text-decoration: none;
-            pointer-events: auto;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 120px 20px 80px;
-            text-align: center;
-        }
-
-        /* 中央旋转 FO 标识 */
-        .hero-mark {
-            position: relative;
-            width: 260px;
-            height: 260px;
-            margin: 0 auto 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .fo-core {
-            position: relative;
-            z-index: 4;
-            width: 126px;
-            height: 126px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, #ff5a52 0%, var(--core-red) 38%, var(--deep-red) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 2.9rem;
-            font-weight: 900;
-            line-height: 1;
-            letter-spacing: -0.08em;
-            box-shadow:
-                0 0 0 12px rgba(255, 59, 48, 0.03),
-                0 0 24px rgba(255, 59, 48, 0.22),
-                0 0 60px rgba(255, 59, 48, 0.16);
-        }
-
-        .fo-core span {
-            transform: translateY(-1px);
-            display: inline-block;
-        }
-
-        .ring {
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .ring-1 {
-            z-index: 3;
-            width: 170px;
-            height: 170px;
-            animation: spinClockwise 8s linear infinite;
-        }
-
-        .ring-1::before,
-        .ring-1::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 10px solid transparent;
-        }
-
-        .ring-1::before {
-            border-top-color: rgba(255, 59, 48, 0.34);
-            border-bottom-color: rgba(255, 59, 48, 0.34);
-            transform: rotate(12deg);
-        }
-
-        .ring-1::after {
-            inset: 8px;
-            border-top-color: rgba(255, 59, 48, 0.18);
-            border-bottom-color: rgba(255, 59, 48, 0.18);
-            transform: rotate(-10deg);
-        }
-
-        .ring-2 {
-            z-index: 2;
-            width: 206px;
-            height: 206px;
-            animation: spinCounterClockwise 12s linear infinite;
-        }
-
-        .ring-2::before,
-        .ring-2::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 10px solid transparent;
-        }
-
-        .ring-2::before {
-            border-left-color: rgba(255, 59, 48, 0.24);
-            border-right-color: rgba(255, 59, 48, 0.24);
-            transform: rotate(8deg);
-        }
-
-        .ring-2::after {
-            inset: 10px;
-            border-left-color: rgba(255, 59, 48, 0.12);
-            border-right-color: rgba(255, 59, 48, 0.12);
-            transform: rotate(-14deg);
-        }
-
-        .ring-3 {
-            z-index: 1;
-            width: 238px;
-            height: 238px;
-            animation: pulseRotate 16s linear infinite;
-        }
-
-        .ring-3::before,
-        .ring-3::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 8px solid transparent;
-        }
-
-        .ring-3::before {
-            border-top-color: rgba(255, 59, 48, 0.12);
-            border-right-color: rgba(255, 59, 48, 0.12);
-            transform: rotate(18deg);
-        }
-
-        .ring-3::after {
-            inset: 12px;
-            border-bottom-color: rgba(255, 59, 48, 0.08);
-            border-left-color: rgba(255, 59, 48, 0.08);
-            transform: rotate(-18deg);
-        }
-
-        @keyframes spinClockwise {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes spinCounterClockwise {
-            from { transform: rotate(360deg); }
-            to { transform: rotate(0deg); }
-        }
-
-        @keyframes pulseRotate {
-            0%   { transform: rotate(0deg) scale(1); opacity: 1; }
-            50%  { transform: rotate(180deg) scale(1.03); opacity: 0.88; }
-            100% { transform: rotate(360deg) scale(1); opacity: 1; }
-        }
-
-        .title-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            margin-bottom: 26px;
-        }
-
-        .title-wrapper h1 {
-            font-size: clamp(2.2rem, 6vw, 4.7rem);
-            font-weight: 800;
-            line-height: 1.05;
-            color: #000;
-            letter-spacing: -0.04em;
-            white-space: nowrap;
-        }
-
-        .title-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--core-red);
-            box-shadow: 0 0 16px rgba(255, 59, 48, 0.35);
-            transform: translateY(4px);
-        }
-
-        .mission-slogan {
-            font-size: 1rem;
-            color: var(--core-red);
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 38px;
-        }
-
-        .cta-container {
-            width: 100%;
-            max-width: 700px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #fff;
-            border: 1px solid #ececef;
-            border-radius: 999px;
-            padding: 7px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.03);
-            margin-bottom: 34px;
-        }
-
-        .cta-container:focus-within {
-            border-color: #d8d8df;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .cta-container input {
-            flex: 1;
-            min-width: 0;
-            border: none;
-            outline: none;
-            background: transparent;
-            padding: 0 22px;
-            height: 54px;
-            font-size: 1.05rem;
-            color: #000;
-        }
-
-        .cta-container input::placeholder {
-            color: #b1b1b8;
-        }
-
-        .cta-container button {
-            flex-shrink: 0;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            height: 54px;
-            padding: 0 32px;
-            border-radius: 999px;
-            background: linear-gradient(180deg, #ff6258 0%, #ff3b30 40%, #e60012 100%);
-            color: #fff;
-            font-size: 1.02rem;
-            font-weight: 700;
-            transition: transform 0.15s ease, box-shadow 0.2s ease;
-            box-shadow: 0 10px 24px rgba(255, 59, 48, 0.22);
-            white-space: nowrap;
-        }
-
-        .cta-container button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 12px 28px rgba(255, 59, 48, 0.26);
-        }
-
-        .hero-note {
-            font-size: 0.92rem;
-            color: var(--text-grey);
-            max-width: 760px;
-            line-height: 1.9;
-        }
-
-        .manifesto-section {
-            max-width: 1180px;
-            margin: 0 auto;
-            padding: 20px 20px 90px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 26px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.92);
-            border: 1px solid #f0f0f4;
-            border-radius: 24px;
-            padding: 32px 28px;
-            box-shadow: var(--soft-shadow);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.06);
-        }
-
-        .card h3 {
-            font-size: 1.28rem;
-            margin-bottom: 12px;
-            color: #000;
-            letter-spacing: -0.02em;
-        }
-
-        .card p {
-            font-size: 0.96rem;
-            color: var(--text-grey);
-            line-height: 1.85;
-        }
-
-        footer {
-            border-top: 1px solid #f2f2f5;
-            padding: 80px 20px 46px;
-            background: #fff;
-        }
-
-        .footer-inner {
-            max-width: 980px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-title {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #000;
-            margin-bottom: 18px;
-            letter-spacing: -0.03em;
-        }
-
-        .footer-desc {
-            max-width: 860px;
-            margin: 0 auto 18px;
-            font-size: 0.98rem;
-            line-height: 1.95;
-            color: #75757c;
-        }
-
-        .footer-desc strong {
-            color: #111;
-            font-weight: 700;
-        }
-
-        .footer-bottom-line {
-            max-width: 760px;
-            margin: 20px auto 22px;
-            font-size: 0.92rem;
-            color: var(--core-red);
-            line-height: 1.85;
-            font-weight: 700;
-        }
-
-        .copyright {
-            font-size: 0.78rem;
-            color: #c6c6cc;
-            letter-spacing: 1px;
-        }
-
-        #transition-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(255,255,255,0.96);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .spinner {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            border: 2px solid #ececef;
-            border-top-color: var(--core-red);
-            animation: spinLoader 0.8s linear infinite;
-        }
-
-        .loading-text {
-            margin-top: 14px;
-            font-size: 0.92rem;
-            color: #8e8e93;
-            letter-spacing: 0.5px;
-        }
-
-        @keyframes spinLoader {
-            to { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 1024px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .site-header {
-                padding: 24px 20px;
-            }
-
-            .hero {
-                padding: 110px 18px 70px;
-            }
-
-            .hero-mark {
-                width: 210px;
-                height: 210px;
-                margin-bottom: 28px;
-            }
-
-            .fo-core {
-                width: 104px;
-                height: 104px;
-                font-size: 2.3rem;
-            }
-
-            .ring-1 {
-                width: 146px;
-                height: 146px;
-            }
-
-            .ring-2 {
-                width: 178px;
-                height: 178px;
-            }
-
-            .ring-3 {
-                width: 202px;
-                height: 202px;
-            }
-
-            .ring-1::before,
-            .ring-1::after,
-            .ring-2::before,
-            .ring-2::after {
-                border-width: 9px;
-            }
-
-            .ring-3::before,
-            .ring-3::after {
-                border-width: 7px;
-            }
-
-            .title-wrapper {
-                gap: 12px;
-                margin-bottom: 20px;
-            }
-
-            .title-dot {
-                width: 12px;
-                height: 12px;
-                transform: translateY(2px);
-            }
-
-            .mission-slogan {
-                font-size: 0.95rem;
-                margin-bottom: 28px;
-            }
-
-            .cta-container {
-                max-width: 100%;
-                margin-bottom: 34px;
-            }
-
-            .cta-container input {
-                height: 50px;
-                padding: 0 16px;
-                font-size: 1rem;
-            }
-
-            .cta-container button {
-                height: 50px;
-                padding: 0 24px;
-                font-size: 0.98rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .brand {
-                font-size: 0.95rem;
-                letter-spacing: 1.5px;
-            }
-
-            .hero {
-                padding: 105px 14px 60px;
-            }
-
-            .hero-mark {
-                width: 180px;
-                height: 180px;
-                margin-bottom: 22px;
-            }
-
-            .fo-core {
-                width: 90px;
-                height: 90px;
-                font-size: 2rem;
-            }
-
-            .ring-1 {
-                width: 126px;
-                height: 126px;
-            }
-
-            .ring-2 {
-                width: 152px;
-                height: 152px;
-            }
-
-            .ring-3 {
-                width: 172px;
-                height: 172px;
-            }
-
-            .ring-1::before,
-            .ring-1::after,
-            .ring-2::before,
-            .ring-2::after {
-                border-width: 8px;
-            }
-
-            .ring-3::before,
-            .ring-3::after {
-                border-width: 6px;
-            }
-
-            .title-wrapper {
-                gap: 10px;
-            }
-
-            .title-wrapper h1 {
-                font-size: clamp(2rem, 9vw, 3rem);
-            }
-
-            .mission-slogan {
-                font-size: 0.9rem;
-                line-height: 1.8;
-                margin-bottom: 24px;
-            }
-
-            .cta-container {
-                padding: 6px;
-                gap: 6px;
-            }
-
-            .cta-container input {
-                padding: 0 14px;
-                height: 48px;
-                font-size: 0.98rem;
-            }
-
-            .cta-container button {
-                height: 48px;
-                padding: 0 20px;
-                font-size: 0.94rem;
-            }
-
-            .card {
-                padding: 26px 22px;
-                border-radius: 20px;
-            }
-
-            .footer-title {
-                font-size: 1.35rem;
-            }
-
-            .footer-desc {
-                font-size: 0.94rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FOTV.COM | 火视网</title>
+
+<style>
+:root {
+    --red:#ff3b30;
+    --deep:#e60012;
+    --text:#111;
+    --grey:#8e8e93;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont;
+    background:#fff;
+    color:var(--text);
+}
+
+/* 顶部 */
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:26px 30px;
+}
+
+.logo{
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+/* 主区域 */
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+/* FO核心 */
+.core{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:radial-gradient(circle,var(--red),var(--deep));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-weight:900;
+    font-size:36px;
+    position:relative;
+}
+
+/* 圆环 */
+.ring{
+    position:absolute;
+    border-radius:50%;
+    border:8px solid transparent;
+}
+
+.r1{
+    width:160px;height:160px;
+    border-top-color:rgba(255,59,48,0.4);
+    animation:spin 8s linear infinite;
+}
+
+.r2{
+    width:200px;height:200px;
+    border-left-color:rgba(255,59,48,0.25);
+    animation:spin2 12s linear infinite;
+}
+
+.r3{
+    width:240px;height:240px;
+    border-bottom-color:rgba(255,59,48,0.15);
+    animation:spin 16s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+@keyframes spin2{
+    to{transform:rotate(-360deg);}
+}
+
+/* 标题 */
+.title{
+    margin-top:30px;
+    font-size:36px;
+    font-weight:800;
+}
+
+.sub{
+    color:var(--red);
+    margin-top:10px;
+}
+
+/* 输入框 */
+.box{
+    margin-top:30px;
+    display:flex;
+    border:1px solid #eee;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.box input{
+    border:none;
+    padding:14px 20px;
+    width:260px;
+    outline:none;
+}
+
+.box button{
+    background:var(--red);
+    color:#fff;
+    border:none;
+    padding:0 20px;
+    cursor:pointer;
+}
+
+/* 卡片 */
+.cards{
+    display:flex;
+    gap:20px;
+    padding:60px 20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    flex:1;
+    padding:24px;
+    border-radius:20px;
+    border:1px solid #eee;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+/* 底部 */
+.footer{
+    text-align:center;
+    padding:60px 20px;
+    border-top:1px solid #eee;
+}
+
+.email{
+    margin-top:20px;
+    display:inline-block;
+    color:var(--red);
+    text-decoration:none;
+    font-weight:600;
+}
+</style>
 </head>
+
 <body>
 
-    <header class="site-header">
-        <a href="/" class="brand">FOTV.COM</a>
-    </header>
+<div class="header">
+    <div class="logo">FOTV.COM</div>
+</div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-mark" aria-hidden="true">
-                <div class="ring ring-3"></div>
-                <div class="ring ring-2"></div>
-                <div class="ring ring-1"></div>
-                <div class="fo-core"><span>FO</span></div>
-            </div>
+<div class="hero">
 
-            <div class="title-wrapper">
-                <h1>火视网</h1>
-                <div class="title-dot"></div>
-                <h1>热播短剧入口</h1>
-            </div>
-
-            <div class="mission-slogan">
-                热播短剧 / CPS分销 / 流量变现
-            </div>
-
-            <div class="cta-container">
-                <input
-                    type="text"
-                    id="userInput"
-                    placeholder="输入短剧关键词，如：霸总、逆袭、战神..."
-                    onkeydown="if(event.key === 'Enter'){ enterFotv(); }"
-                />
-                <button onclick="enterFotv()">进入火视</button>
-            </div>
-
-            <div class="hero-note">
-                FOTV.COM：聚合热播短剧资源，打造最简单直接的短剧入口与分销变现通道
-            </div>
-        </section>
-
-        <section class="manifesto-section">
-            <div class="grid">
-                <div class="card">
-                    <h3>热播短剧</h3>
-                    <p>
-                        聚焦当下最容易传播、最容易转化、最容易形成爆款的热播短剧内容，
-                        围绕霸总、逆袭、重生、战神、甜宠等高转化题材，形成清晰直接的内容入口。
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>CPS分销</h3>
-                    <p>
-                        不做重资产制作，不自己拍剧，直接对接短剧资源方，
-                        通过推广链接、分佣后台与流量转化机制，完成从点击、观看到成交分佣的闭环。
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>流量变现</h3>
-                    <p>
-                        通过短视频切片、主页链接、导航入口与内容分发，
-                        把用户注意力转化为实际点击与订单，让 FOTV.COM 成为一个真正可以收钱的流量入口。
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-title">FOTV.COM｜火视网</div>
-
-            <p class="footer-desc">
-                <strong>FOTV.COM</strong> 不讲复杂故事，只做一件事：
-                聚合热播短剧，承接流量，完成分发，形成成交。
-                它不是一个空想平台，而是一个更轻、更快、更直接的短剧入口，
-                让内容、流量与变现之间建立最短路径。
-            </p>
-
-            <p class="footer-desc">
-                火视网的核心不是制作，而是连接；
-                不是重资产投入，而是高效率转化。
-                当热门内容与有效流量被组织起来，FOTV.COM 就不只是一个域名，
-                而是一个能够不断接住注意力、完成转化、产生现金流的入口。
-            </p>
-
-            <div class="footer-bottom-line">
-                聚合热剧 · 承接流量 · 完成转化
-            </div>
-
-            <div class="copyright">
-                © 2026 FOTV.COM · All Rights Reserved
-            </div>
-        </div>
-    </footer>
-
-    <div id="transition-overlay">
-        <div class="spinner"></div>
-        <div class="loading-text">正在进入火视网...</div>
+    <div style="position:relative">
+        <div class="ring r3"></div>
+        <div class="ring r2"></div>
+        <div class="ring r1"></div>
+        <div class="core">FO</div>
     </div>
 
-    <script>
-        function enterFotv() {
-            const query = document.getElementById('userInput').value.trim();
-            const overlay = document.getElementById('transition-overlay');
+    <div class="title">火视网</div>
+    <div class="sub">精选热播短剧入口</div>
 
-            overlay.style.display = 'flex';
+    <div class="box">
+        <input id="q" placeholder="输入短剧关键词..." />
+        <button onclick="go()">进入</button>
+    </div>
 
-            setTimeout(() => {
-                if (query) {
-                    const url = `https://fotv.com/search?q=${encodeURIComponent(query)}`;
-                    window.location.href = url;
-                } else {
-                    window.location.href = 'https://fotv.com/';
-                }
-            }, 500);
-        }
-    </script>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <h3>热播短剧</h3>
+        <p>精选当前热门短剧内容，覆盖逆袭、甜宠、都市等高热题材。</p>
+    </div>
+
+    <div class="card">
+        <h3>精选内容</h3>
+        <p>持续更新高关注短剧，帮助用户快速发现精彩剧情。</p>
+    </div>
+
+    <div class="card">
+        <h3>便捷入口</h3>
+        <p>更简单的方式进入短剧内容，减少操作路径。</p>
+    </div>
+</div>
+
+<div class="footer">
+    <div style="font-weight:800;font-size:20px;">FOTV.COM｜火视网</div>
+
+    <p style="margin-top:10px;color:#666;">
+        专注热播短剧内容，提供清晰直接的观看入口
+    </p>
+
+    <!-- 👉 改成你的邮箱 -->
+    <a class="email" href="mailto:your@email.com">
+        cengchengzhi@gmail.com
+    </a>
+
+    <div style="margin-top:20px;color:#aaa;font-size:12px;">
+        © 2026 FOTV.COM
+    </div>
+</div>
+
+<script>
+function go(){
+    const q=document.getElementById("q").value;
+
+    // 👉 后面你可以改成 CPS链接
+    if(q){
+        window.location.href="https://www.baidu.com/s?wd="+q;
+    }else{
+        window.location.href="https://www.baidu.com";
+    }
+}
+</script>
+
 </body>
 </html>
