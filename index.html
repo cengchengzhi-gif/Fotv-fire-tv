@@ -1,254 +1,739 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOTV.COM® | 全球短剧行星分发协议</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>FOTV.COM | 火视网</title>
+
     <style>
         :root {
-            --mars-red: #E60012;
-            --tech-purple-glow: rgba(192, 132, 252, 0.25); 
-            --dim-white-glow: rgba(255, 255, 255, 0.15);
-            --tech-purple: #C084FC;
-            --tech-silver: #FFFFFF;
-            --text-silver-dim: #bbbbbb;
-            --deep-black: #000000;
-            --legal-gray: #1a1a1a;
+            --core-red: #ff3b30;
+            --deep-red: #e60012;
+            --light-red: rgba(255, 59, 48, 0.18);
+            --lighter-red: rgba(255, 59, 48, 0.10);
+            --text-black: #111111;
+            --text-grey: #8e8e93;
+            --bg-white: #ffffff;
+            --soft-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
         }
 
-        body, html {
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', 'Helvetica Neue', Arial, 'PingFang SC', sans-serif;
-            background-color: var(--deep-black);
-            color: white;
-            overflow-x: hidden;
-            height: 100%;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* 宇宙深空背景 */
-        .bg-overlay {
+        html, body {
+            width: 100%;
+            min-height: 100%;
+            background: var(--bg-white);
+            color: var(--text-black);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .site-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, #100005 0%, #000000 100%);
-            z-index: -1;
+            padding: 28px 34px;
+            z-index: 100;
+            pointer-events: none;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 5vh; 
+        .brand {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #000;
+            text-decoration: none;
+            pointer-events: auto;
         }
 
-        /* 核心品牌勋章 */
-        .brand-hub {
+        .hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+
+        /* 中央旋转 FO 标识 */
+        .hero-mark {
             position: relative;
+            width: 260px;
+            height: 260px;
+            margin: 0 auto 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* 金色电视标识 */
-        .hero-logo-svg {
-            height: 160px; 
-            width: auto;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
+        .fo-core {
+            position: relative;
+            z-index: 4;
+            width: 126px;
+            height: 126px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #ff5a52 0%, var(--core-red) 38%, var(--deep-red) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2.9rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.08em;
+            box-shadow:
+                0 0 0 12px rgba(255, 59, 48, 0.03),
+                0 0 24px rgba(255, 59, 48, 0.22),
+                0 0 60px rgba(255, 59, 48, 0.16);
+        }
+
+        .fo-core span {
+            transform: translateY(-1px);
+            display: inline-block;
+        }
+
+        .ring {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .ring-1 {
+            z-index: 3;
+            width: 170px;
+            height: 170px;
+            animation: spinClockwise 8s linear infinite;
+        }
+
+        .ring-1::before,
+        .ring-1::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 10px solid transparent;
+        }
+
+        .ring-1::before {
+            border-top-color: rgba(255, 59, 48, 0.34);
+            border-bottom-color: rgba(255, 59, 48, 0.34);
+            transform: rotate(12deg);
+        }
+
+        .ring-1::after {
+            inset: 8px;
+            border-top-color: rgba(255, 59, 48, 0.18);
+            border-bottom-color: rgba(255, 59, 48, 0.18);
+            transform: rotate(-10deg);
+        }
+
+        .ring-2 {
             z-index: 2;
+            width: 206px;
+            height: 206px;
+            animation: spinCounterClockwise 12s linear infinite;
         }
 
-        /* 火星自转动效 */
-        .mars-rotating-core {
-            fill: url(#marsSphere);
-            transform-origin: 120px 120px;
-            animation: marsSelfRotate 25s infinite linear;
+        .ring-2::before,
+        .ring-2::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 10px solid transparent;
         }
 
-        @keyframes marsSelfRotate {
+        .ring-2::before {
+            border-left-color: rgba(255, 59, 48, 0.24);
+            border-right-color: rgba(255, 59, 48, 0.24);
+            transform: rotate(8deg);
+        }
+
+        .ring-2::after {
+            inset: 10px;
+            border-left-color: rgba(255, 59, 48, 0.12);
+            border-right-color: rgba(255, 59, 48, 0.12);
+            transform: rotate(-14deg);
+        }
+
+        .ring-3 {
+            z-index: 1;
+            width: 238px;
+            height: 238px;
+            animation: pulseRotate 16s linear infinite;
+        }
+
+        .ring-3::before,
+        .ring-3::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 8px solid transparent;
+        }
+
+        .ring-3::before {
+            border-top-color: rgba(255, 59, 48, 0.12);
+            border-right-color: rgba(255, 59, 48, 0.12);
+            transform: rotate(18deg);
+        }
+
+        .ring-3::after {
+            inset: 12px;
+            border-bottom-color: rgba(255, 59, 48, 0.08);
+            border-left-color: rgba(255, 59, 48, 0.08);
+            transform: rotate(-18deg);
+        }
+
+        @keyframes spinClockwise {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        /* 品牌文字块 */
-        .hero-title-text {
-            margin-top: 8px; 
-            position: relative;
-            z-index: 3;
+        @keyframes spinCounterClockwise {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
         }
 
-        .super-domain {
-            font-size: 26pt; 
-            font-weight: 900;
+        @keyframes pulseRotate {
+            0%   { transform: rotate(0deg) scale(1); opacity: 1; }
+            50%  { transform: rotate(180deg) scale(1.03); opacity: 0.88; }
+            100% { transform: rotate(360deg) scale(1); opacity: 1; }
+        }
+
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-bottom: 26px;
+        }
+
+        .title-wrapper h1 {
+            font-size: clamp(2.2rem, 6vw, 4.7rem);
+            font-weight: 800;
+            line-height: 1.05;
+            color: #000;
+            letter-spacing: -0.04em;
+            white-space: nowrap;
+        }
+
+        .title-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--core-red);
+            box-shadow: 0 0 16px rgba(255, 59, 48, 0.35);
+            transform: translateY(4px);
+        }
+
+        .mission-slogan {
+            font-size: 1rem;
+            color: var(--core-red);
+            font-weight: 700;
             letter-spacing: 1px;
-            margin: 0;
-            background: linear-gradient(180deg, var(--tech-silver) 30%, var(--tech-purple) 90%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase; 
-            line-height: 1.1;
+            margin-bottom: 38px;
         }
 
-        .chinese-brand {
-            font-size: 18pt; 
-            font-weight: bold;
-            color: var(--mars-red);
-            letter-spacing: 14px;
-            margin-top: 5px;
-            text-indent: 14px;
-            opacity: 0.95;
-        }
-
-        /* 叙事区：银白+银紫微光 */
-        .drama-narrative {
-            margin-top: 50px; 
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .glow-statement {
-            font-size: 14pt;
-            font-weight: 300;
-            color: var(--text-silver-dim); 
-            letter-spacing: 6px;
-            line-height: 2.2;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.1), 0 0 10px var(--tech-purple-glow);
-            opacity: 0.85;
-            animation: narrativePulse 6s infinite alternate;
-        }
-
-        @keyframes narrativePulse {
-            from { opacity: 0.75; text-shadow: 0 0 4px rgba(255, 255, 255, 0.05); }
-            to { opacity: 1; text-shadow: 0 0 10px rgba(192, 132, 252, 0.15); }
-        }
-
-        .sub-narrative {
-            font-size: 9.5pt;
-            color: #555; 
-            letter-spacing: 3px;
-            line-height: 2;
-            margin-top: 30px;
-            font-weight: 200;
-        }
-
-        /* 底部区域 */
-        footer {
-            position: absolute;
-            bottom: 0;
+        .cta-container {
             width: 100%;
-            padding: 40px 0;
+            max-width: 700px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            border: 1px solid #ececef;
+            border-radius: 999px;
+            padding: 7px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+            margin-bottom: 34px;
+        }
+
+        .cta-container:focus-within {
+            border-color: #d8d8df;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .cta-container input {
+            flex: 1;
+            min-width: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 0 22px;
+            height: 54px;
+            font-size: 1.05rem;
+            color: #000;
+        }
+
+        .cta-container input::placeholder {
+            color: #b1b1b8;
+        }
+
+        .cta-container button {
+            flex-shrink: 0;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            height: 54px;
+            padding: 0 32px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #ff6258 0%, #ff3b30 40%, #e60012 100%);
+            color: #fff;
+            font-size: 1.02rem;
+            font-weight: 700;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            box-shadow: 0 10px 24px rgba(255, 59, 48, 0.22);
+            white-space: nowrap;
+        }
+
+        .cta-container button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(255, 59, 48, 0.26);
+        }
+
+        .hero-note {
+            font-size: 0.92rem;
+            color: var(--text-grey);
+            max-width: 760px;
+            line-height: 1.9;
+        }
+
+        .manifesto-section {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 20px 20px 90px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 26px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid #f0f0f4;
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: var(--soft-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h3 {
+            font-size: 1.28rem;
+            margin-bottom: 12px;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+
+        .card p {
+            font-size: 0.96rem;
+            color: var(--text-grey);
+            line-height: 1.85;
+        }
+
+        footer {
+            border-top: 1px solid #f2f2f5;
+            padding: 80px 20px 46px;
+            background: #fff;
+        }
+
+        .footer-inner {
+            max-width: 980px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .footer-network-info {
-            font-size: 8pt;
-            color: #333; 
-            letter-spacing: 3px;
-            font-weight: 300;
-            text-transform: uppercase;
-            margin-bottom: 15px;
+        .footer-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 18px;
+            letter-spacing: -0.03em;
         }
 
-        .legal-notice {
-            font-size: 7pt;
-            color: var(--legal-gray);
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 2;
+        .footer-desc {
+            max-width: 860px;
+            margin: 0 auto 18px;
+            font-size: 0.98rem;
+            line-height: 1.95;
+            color: #75757c;
+        }
+
+        .footer-desc strong {
+            color: #111;
+            font-weight: 700;
+        }
+
+        .footer-bottom-line {
+            max-width: 760px;
+            margin: 20px auto 22px;
+            font-size: 0.92rem;
+            color: var(--core-red);
+            line-height: 1.85;
+            font-weight: 700;
+        }
+
+        .copyright {
+            font-size: 0.78rem;
+            color: #c6c6cc;
             letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
         }
 
-        /* 合作联系：亮度调暗，微光处理 */
-        .contact-area {
-            display: inline-block;
-            font-size: 10pt;
-            color: #888; /* 基础文字调暗 */
-            letter-spacing: 2px;
-            font-weight: 300;
+        #transition-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.96);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
 
-        .contact-email {
-            color: #bbbbbb; /* 邮箱地址稍微亮一点点，但依然保持克制 */
-            text-decoration: none;
-            text-shadow: 0 0 4px var(--dim-white-glow);
-            transition: 0.3s;
+        .spinner {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid #ececef;
+            border-top-color: var(--core-red);
+            animation: spinLoader 0.8s linear infinite;
         }
 
-        .contact-email:hover {
-            color: #ffffff;
-            text-shadow: 0 0 12px var(--tech-purple);
+        .loading-text {
+            margin-top: 14px;
+            font-size: 0.92rem;
+            color: #8e8e93;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes spinLoader {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero-logo-svg { height: 130px; }
-            .super-domain { font-size: 20pt; }
-            .glow-statement { font-size: 11pt; padding: 0 20px; }
-            footer { position: relative; margin-top: 80px; }
+            .site-header {
+                padding: 24px 20px;
+            }
+
+            .hero {
+                padding: 110px 18px 70px;
+            }
+
+            .hero-mark {
+                width: 210px;
+                height: 210px;
+                margin-bottom: 28px;
+            }
+
+            .fo-core {
+                width: 104px;
+                height: 104px;
+                font-size: 2.3rem;
+            }
+
+            .ring-1 {
+                width: 146px;
+                height: 146px;
+            }
+
+            .ring-2 {
+                width: 178px;
+                height: 178px;
+            }
+
+            .ring-3 {
+                width: 202px;
+                height: 202px;
+            }
+
+            .ring-1::before,
+            .ring-1::after,
+            .ring-2::before,
+            .ring-2::after {
+                border-width: 9px;
+            }
+
+            .ring-3::before,
+            .ring-3::after {
+                border-width: 7px;
+            }
+
+            .title-wrapper {
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+
+            .title-dot {
+                width: 12px;
+                height: 12px;
+                transform: translateY(2px);
+            }
+
+            .mission-slogan {
+                font-size: 0.95rem;
+                margin-bottom: 28px;
+            }
+
+            .cta-container {
+                max-width: 100%;
+                margin-bottom: 34px;
+            }
+
+            .cta-container input {
+                height: 50px;
+                padding: 0 16px;
+                font-size: 1rem;
+            }
+
+            .cta-container button {
+                height: 50px;
+                padding: 0 24px;
+                font-size: 0.98rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand {
+                font-size: 0.95rem;
+                letter-spacing: 1.5px;
+            }
+
+            .hero {
+                padding: 105px 14px 60px;
+            }
+
+            .hero-mark {
+                width: 180px;
+                height: 180px;
+                margin-bottom: 22px;
+            }
+
+            .fo-core {
+                width: 90px;
+                height: 90px;
+                font-size: 2rem;
+            }
+
+            .ring-1 {
+                width: 126px;
+                height: 126px;
+            }
+
+            .ring-2 {
+                width: 152px;
+                height: 152px;
+            }
+
+            .ring-3 {
+                width: 172px;
+                height: 172px;
+            }
+
+            .ring-1::before,
+            .ring-1::after,
+            .ring-2::before,
+            .ring-2::after {
+                border-width: 8px;
+            }
+
+            .ring-3::before,
+            .ring-3::after {
+                border-width: 6px;
+            }
+
+            .title-wrapper {
+                gap: 10px;
+            }
+
+            .title-wrapper h1 {
+                font-size: clamp(2rem, 9vw, 3rem);
+            }
+
+            .mission-slogan {
+                font-size: 0.9rem;
+                line-height: 1.8;
+                margin-bottom: 24px;
+            }
+
+            .cta-container {
+                padding: 6px;
+                gap: 6px;
+            }
+
+            .cta-container input {
+                padding: 0 14px;
+                height: 48px;
+                font-size: 0.98rem;
+            }
+
+            .cta-container button {
+                height: 48px;
+                padding: 0 20px;
+                font-size: 0.94rem;
+            }
+
+            .card {
+                padding: 26px 22px;
+                border-radius: 20px;
+            }
+
+            .footer-title {
+                font-size: 1.35rem;
+            }
+
+            .footer-desc {
+                font-size: 0.94rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="bg-overlay"></div>
+    <header class="site-header">
+        <a href="/" class="brand">FOTV.COM</a>
+    </header>
 
-<div class="container">
-    <div class="hero-section">
-        <div class="brand-hub">
-            <svg class="hero-logo-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="goldCase" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#FFD700" />
-                        <stop offset="100%" style="stop-color:#B8860B" />
-                    </linearGradient>
-                    <radialGradient id="marsSphere" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-                        <stop offset="0%" style="stop-color:#FF8C00" />
-                        <stop offset="60%" style="stop-color:#E60012" />
-                        <stop offset="100%" style="stop-color:#330000" />
-                    </radialGradient>
-                </defs>
-                <rect x="50" y="70" width="140" height="100" rx="15" fill="url(#goldCase)" />
-                <rect x="62" y="82" width="116" height="76" rx="8" fill="#000" />
-                <circle class="mars-rotating-core" cx="120" cy="120" r="30" />
-                <polygon points="128,120 115,110 115,130" fill="white" opacity="0.9" />
-                <line x1="120" y1="70" x2="85" y2="25" stroke="#FFD700" stroke-width="2.5" />
-                <line x1="120" y1="70" x2="155" y2="25" stroke="#FFD700" stroke-width="2.5" />
-                <circle cx="178" cy="95" r="5" fill="#332200" />
-                <circle cx="178" cy="115" r="5" fill="#332200" />
-            </svg>
-            <div class="hero-title-text">
-                <h1 class="super-domain">FOTV.COM</h1>
-                <div class="chinese-brand">火视网</div>
+    <main>
+        <section class="hero">
+            <div class="hero-mark" aria-hidden="true">
+                <div class="ring ring-3"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-1"></div>
+                <div class="fo-core"><span>FO</span></div>
+            </div>
+
+            <div class="title-wrapper">
+                <h1>火视网</h1>
+                <div class="title-dot"></div>
+                <h1>热播短剧入口</h1>
+            </div>
+
+            <div class="mission-slogan">
+                热播短剧 / CPS分销 / 流量变现
+            </div>
+
+            <div class="cta-container">
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="输入短剧关键词，如：霸总、逆袭、战神..."
+                    onkeydown="if(event.key === 'Enter'){ enterFotv(); }"
+                />
+                <button onclick="enterFotv()">进入火视</button>
+            </div>
+
+            <div class="hero-note">
+                FOTV.COM：聚合热播短剧资源，打造最简单直接的短剧入口与分销变现通道
+            </div>
+        </section>
+
+        <section class="manifesto-section">
+            <div class="grid">
+                <div class="card">
+                    <h3>热播短剧</h3>
+                    <p>
+                        聚焦当下最容易传播、最容易转化、最容易形成爆款的热播短剧内容，
+                        围绕霸总、逆袭、重生、战神、甜宠等高转化题材，形成清晰直接的内容入口。
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>CPS分销</h3>
+                    <p>
+                        不做重资产制作，不自己拍剧，直接对接短剧资源方，
+                        通过推广链接、分佣后台与流量转化机制，完成从点击、观看到成交分佣的闭环。
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>流量变现</h3>
+                    <p>
+                        通过短视频切片、主页链接、导航入口与内容分发，
+                        把用户注意力转化为实际点击与订单，让 FOTV.COM 成为一个真正可以收钱的流量入口。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-title">FOTV.COM｜火视网</div>
+
+            <p class="footer-desc">
+                <strong>FOTV.COM</strong> 不讲复杂故事，只做一件事：
+                聚合热播短剧，承接流量，完成分发，形成成交。
+                它不是一个空想平台，而是一个更轻、更快、更直接的短剧入口，
+                让内容、流量与变现之间建立最短路径。
+            </p>
+
+            <p class="footer-desc">
+                火视网的核心不是制作，而是连接；
+                不是重资产投入，而是高效率转化。
+                当热门内容与有效流量被组织起来，FOTV.COM 就不只是一个域名，
+                而是一个能够不断接住注意力、完成转化、产生现金流的入口。
+            </p>
+
+            <div class="footer-bottom-line">
+                聚合热剧 · 承接流量 · 完成转化
+            </div>
+
+            <div class="copyright">
+                © 2026 FOTV.COM · All Rights Reserved
             </div>
         </div>
+    </footer>
 
-        <div class="drama-narrative">
-            <div class="glow-statement">
-                记录文明的每一刻精彩，点燃跨越行星的影像火种。<br>
-                FOTV® 致力于全球热门短剧分发，构建星际级流量协议。
-            </div>
-            <div class="sub-narrative">
-                从本土爆款到全球出海，FOTV® 正在重新定义内容分发的疆界。<br>
-                作为行星级媒体矩阵的核心，我们让每一帧短剧都具备跨越维度的爆发力。
-            </div>
-        </div>
+    <div id="transition-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">正在进入火视网...</div>
     </div>
-</div>
 
-<footer>
-    <div class="footer-network-info">WWW.FOTV.COM | FOTV® MEDIA NETWORKS</div>
-    <div class="legal-notice">
-        © 2026 FOTV MEDIA NETWORKS | MARS SECTOR | FOTV® (CLASS 35) <br>
-        INITIALIZING GLOBAL SHORT DRAMA DISTRIBUTION PROTOCOL
-    </div>
-    <div class="contact-area">
-        合作联系：<a href="mailto:cengchengzhi@gmail.com" class="contact-email">cengchengzhi@gmail.com</a>
-    </div>
-</footer>
+    <script>
+        function enterFotv() {
+            const query = document.getElementById('userInput').value.trim();
+            const overlay = document.getElementById('transition-overlay');
 
+            overlay.style.display = 'flex';
+
+            setTimeout(() => {
+                if (query) {
+                    const url = `https://fotv.com/search?q=${encodeURIComponent(query)}`;
+                    window.location.href = url;
+                } else {
+                    window.location.href = 'https://fotv.com/';
+                }
+            }, 500);
+        }
+    </script>
 </body>
 </html>
